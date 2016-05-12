@@ -2,29 +2,12 @@ import "./user-management/quickstart-users";
 import "../tmp/templates";
 import Base from "./shared/quickbase-client";
 
-var mainApp = angular.module("mainApp", ["quickstart-users"])
+const DEPENDENCIES = [
+  'ngRoute',
+  'quickstart-users',
+  'templates'
+];
 
-mainApp.config(function ($routeProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'partials/app/dashboard-template.html',
-      controller: "DashboardController"
-    })
-});
+angular.module('app', DEPENDENCIES)
 
-mainApp.controller('DashboardController', function($scope){
-  console.log('dashboard controller...');
-
-	Base.activities.doQuery({ rid: { XEX: "" }}, {}, function(activities){
-    activities.forEach(function(activity, index){
-      var row = $("#activityTemplate").clone().removeAttr("id");
-
-      $(row).find(".number").html(index + 1);
-      $(row).find(".customerName").html(activity.customerName);
-      $(row).find(".type").html(activity.type);
-      $(row).find(".date").html(BaseHelpers.dateToString(activity.date));
-
-      $("#activities").append(row);
-    });
-	});
-})
+angular.bootstrap(document, ['app']);
