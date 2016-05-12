@@ -5,5 +5,5 @@ module.exports = {
   templates: "src/templates/**/*.html",
   outputDev: "./tmp",
   outputProd: "./dist",
-  config: "app.json"
+  config: "config.js"
 };

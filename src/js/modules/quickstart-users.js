@@ -1,9 +1,9 @@
-var config = require('../../../app.json');
+var config = require('../../../config.js');
 import Base from "./quickbase-client"
 
 angular.module('templates', [])
 var quickstart_users = angular.module("quickstart-users", ['ngRoute', 'templates']);
-  
+
 quickstart_users.constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
   loginFailed: 'auth-login-failed',
@@ -63,7 +63,7 @@ quickstart_users.directive('equals', function() {
     restrict: 'A', require: '?ngModel',
     link: function(scope, elem, attrs, ngModel) {
       if(!ngModel) return;
-      
+
       scope.$watch(attrs.ngModel, function() {
         validate();
       });
@@ -106,7 +106,7 @@ quickstart_users.service('AuthService', function ($http, $rootScope, $route, AUT
     if(cookie){
       return JSON.parse(cookie).ticket;
     };
-    
+
     return "";
   };
 
@@ -118,7 +118,7 @@ quickstart_users.service('AuthService', function ($http, $rootScope, $route, AUT
       cookie["lastLoggedIn"] = BaseHelpers.dateTimeToString(cookie.lastLoggedIn, config.timezone);
       return cookie;
     };
-    
+
     return "";
   };
 
@@ -174,10 +174,10 @@ quickstart_users.service('AuthService', function ($http, $rootScope, $route, AUT
 
   this.changePassword = function(user){
     $("#changePassword").attr("disabled", "disabled").html("Processing...");
-    
+
     var user = {
       newPassword: user.newPassword,
-      currentPassword: user.oldPassword 
+      currentPassword: user.oldPassword
     };
 
     Base.quickstart.changePassword(user, function(response){
