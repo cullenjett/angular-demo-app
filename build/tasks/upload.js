@@ -5,8 +5,9 @@ var foreach = require('gulp-foreach');
 var path = require('path');
 var notify = require('gulp-notify');
 var replace = require('gulp-replace');
+
 var paths = require('../paths');
-var app = require(paths.config);
+var app = require(paths.app);
 
 // push to QuickBase App
 gulp.task('upload-html', ['upload-assets'], function() {
@@ -39,17 +40,12 @@ gulp.task('upload-assets', ['js-prod', 'css-prod', 'html-prod'], function() {
 });
 
 gulp.task('upload-config', function() {
-  return gulp.src(paths.config)
-    .pipe(foreach(function(stream, file){
-      var config = JSON.parse(file.contents.toString());
-      config = JSON.stringify(config["baseConfig"]);
-      contents = handleXMLChars(config);
+  var config = JSON.stringify(app.baseConfig);
+  var data = buildVar(handleXMLChars(config));
 
-      var data = buildVar(contents);
-      sendQBRequest("API_SetDBvar", data);
+  sendQBRequest("API_SetDBvar", data);
 
-      return stream;
-    }))
+  this.emit('end');
 });
 
 function buildVar(contents){
@@ -94,6 +90,10 @@ function buildPage(body, name){
 }
 
 function handleXMLChars(string){
+  if (!string) {
+    return
+  }
+
   return string
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')

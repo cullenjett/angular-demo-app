@@ -13,7 +13,7 @@ var source = require('vinyl-source-stream');
 var notify = require('gulp-notify');
 
 var paths = require('../paths');
-var app = require(paths.config);
+var app = require(paths.app);
 
 function interceptErrors(error) {
   var args = Array.prototype.slice.call(arguments);

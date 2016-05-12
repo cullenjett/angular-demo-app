@@ -4,8 +4,9 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var insert = require('gulp-insert');
+
 var paths = require('../paths');
-var app = require(paths.config);
+var app = require(paths.app);
 
 var htmlTasks = [ 'html-dev', browserSync.reload ];
 var templateTasks = [ 'templates', 'js-dev', browserSync.reload ];

@@ -3,8 +3,9 @@ var insert = require('gulp-insert');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var templateCache = require('gulp-angular-templatecache');
+
 var paths = require('../paths');
-var app = require(paths.config);
+var app = require(paths.app);
 
 gulp.task('html-dev', function() {
   return gulp.src(paths.html)

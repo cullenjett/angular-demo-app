@@ -3,27 +3,38 @@ module.exports = {
   description: "Top secret work",
   client: "AIS",
   username: "cullenjett",
-  origin: "",
+  origin: "https://github.com/AdvantageIntegratedSolutions/project-condor.git",
   authors: ["The Condor"],
   bootstrap: "./src/main.js",
   timezone: "mountain",
   baseConfig: {
     quickstart: "true",
     realm: "ais",
-    token: "",
     async: "callback",
-    databaseId: "bkqdhycdy",
+    databaseId: "bkuvskxbm",
+    token: "",
     tables: {
-      customers: {
-        dbid: "bkqdhyceg",
-        rid: 3,
+      users: {
+        dbid: "bkuvskxhu",
+        id: 3,
+        relatedClient: 12,
+        relatedClientName: 13,
         quickstart: {
-          username: 21,
-          password: 38,
-          key: 39,
-          name: 42,
-          lastLoggedIn: 40,
-          restricted: 46
+          name: 6,
+          username: 7,
+          key: 8,
+          password: 9,
+          restricted: 10,
+          lastLoggedIn: 11
+        }
+      },
+      clients: {
+        dbid: "bkuvskxud",
+        id: 3,
+        name: 6,
+        quickstart: {
+          viewKey: 11,
+          modifyKey: 12
         }
       },
       activities: {
