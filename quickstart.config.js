@@ -1,12 +1,12 @@
 module.exports = {
-  name: "AISQuickStartCRM",
-  description: "QuickStart demo application.",
+  name: "project-condor",
+  description: "Top secret work",
   client: "AIS",
-  username: "kith",
+  username: "cullenjett",
   origin: "",
-  authors: ["khensel@advantagequickbase.com", "zsiglin@advantagequickbase.com"],
+  authors: ["The Condor"],
   bootstrap: "./src/main.js",
-  timezone: "eastern",
+  timezone: "mountain",
   baseConfig: {
     quickstart: "true",
     realm: "ais",
