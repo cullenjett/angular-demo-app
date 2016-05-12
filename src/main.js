@@ -2,12 +2,14 @@ import "./user-management/quickstart-users";
 import "../tmp/templates";
 import Base from "./shared/quickbase-client";
 
-import "./dashboard"
+import "./shared";
+import "./dashboard";
 
 const DEPENDENCIES = [
   'ngRoute',
   'quickstart-users',
   'templates',
+  'app.shared',
   'app.dashboard'
 ];
 

@@ -1,6 +1,7 @@
 class DashboardCtrl {
-  constructor(AuthService) {
+  constructor(AuthService, ActivityService) {
     this.currentUser = AuthService.currentUser()
+    ActivityService.getAll().then(activities => this.activities = activities);
   }
 }
 
