@@ -1,0 +1,174 @@
+$gray-darker:  lighten(#000, 13.5%);
+$gray-dark:    lighten(#000, 20%);
+$gray:         lighten(#000, 33.5%);
+$gray-light:   lighten(#000, 46.7%);
+$gray-lighter: lighten(#000, 93.5%);
+$brand-primary: darken(#428bca, 6.5%);
+$brand-success: #5cb85c;
+$brand-info:    #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger:  #d9534f;
+
+#signedInAs{
+	color: white; 
+	cursor: auto;
+}
+
+#alert-flyover{
+	position: fixed;
+	width: 300px;
+	color: white;
+	padding: 10px;
+	border-radius: 4px 0px 0px 4px;
+	font-size:16px;
+	right: -600px;
+	bottom: 0px;
+	overflow: hidden;
+	opacity: 0.9;
+	z-index: 1050;
+	transition: right 1.2s ease-out 0s;
+}
+
+#alert-flyover.in{
+	right: 0px;
+}
+
+#alert-flyover.error{
+	background-color: $brand-danger;
+}
+
+#alert-flyover.success{
+	background-color: $brand-success;
+}
+
+.form-button:disabled{
+	border: 0px;
+	background-color: #B5B5B5;
+}
+
+.validation-errors{
+	position: absolute;
+	left: 0px;
+	bottom: 10px;
+	width: 250px;
+	text-align: left;
+}
+
+.user-error{
+	width: 100%;
+	background-color: $brand-info;
+	padding: 10px;
+	font-size: 12px;
+	color: white;
+	border-radius: 0px 4px 4px 0px;
+}
+ 
+.nav {
+	ul {
+  	list-style: none;
+  	background-color: #333;
+  	margin: 0;
+  	text-align: right;
+  	height: 50px;
+  	padding-top: 10px;
+	}
+
+	li {
+	  border-bottom: none;
+	  height: 35px;
+	  line-height: 40px;
+	  font-size: 14px;
+	  display: inline-block;
+	  padding-right: 20px;
+	  cursor: pointer;
+	  font-weight: 100;
+	}
+
+  .quickstart{
+  	float: left;
+  	font-size: 20px;	
+  	margin-left: 70px;
+  }
+
+  .logo{
+  	position: absolute;
+  	left: 0px;
+  	top: 0px;
+  	float: left;
+  	width: 55px;
+  	height: 55px;
+  	float: left;
+
+  	img{
+  		height: 100%;
+  		width: 100%;
+  	}
+  }
+
+  .action{
+  	float: right;
+  }
+
+	a {
+	  text-decoration: none;
+	  color: #fff;
+	  display: block;
+	  transition: .3s background-color;
+	}
+}
+
+.sub-nav{
+	background-color: $brand-primary;
+	width: 100%;
+	height: 25px;
+}
+
+#forgot-password, #register{
+	cursor: pointer;
+	float: right;
+	position: absolute;
+  bottom: 15px;
+}
+
+#changePassword{
+	cursor: pointer;
+}
+
+#register{
+  right: 15px;
+}
+
+#forgot-password{
+	left: 15px;
+}
+
+.navbar{
+	position: absolute;
+	height: 60px;
+	width: 100%;
+	background-color: black;
+}
+
+.user-container{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	width: 400px;
+	height: 400px;
+	padding: 10px;
+	border: 1px solid #CCC;
+	border-radius: 4px;
+	box-shadow: 4px 4px 4px #E6E6E6;
+	text-align: center;
+	position: relative;
+	background-color: white;
+
+	h3{
+		font-weight: 300px;
+	}
+
+	label{
+		float: left;
+		font-weight: 100;
+	}
+}

@@ -1,0 +1,74 @@
+<div class="user-container">
+  <div class="twelve columns form-container center-text right">
+    <form name="registerForm" ng-submit="authService.createUser(user)" novalidate>
+      <h3>Register</h3>
+      <div class="row">
+        <label>Email</label>
+        <input 
+          id='email' 
+          name='email'
+          class="u-full-width" 
+          type='email' 
+          ng-model="user.email" 
+          ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"
+          required>
+      </div>
+      <div class="row">
+        <label>Password</label>
+        <input 
+          id='password' 
+          name="password"
+          class="u-full-width" 
+          type='password' 
+          ng-model="user.password" 
+          ng-minlength="6"
+          ng-maxlength="12"
+          equals="{{user.confirmPassword}}"
+          required>
+      </div>
+      <div class="row">
+        <label for="confirmPassword">Confirm Password</label>
+        <input 
+          id="confirmPassword"
+          name="confirmPassword"
+          class="u-full-width" 
+          ng-model="user.confirmPassword" 
+          type='password' 
+          ng-minlength="6"
+          ng-maxlength="12"
+          equals="{{user.password}}"
+          required
+          >
+      </div>
+      <a class="button" ng-href="#/login">Cancel</a>
+      <button id="signUp" class="button-primary form-button" type="submit" ng-disabled="registerForm.$invalid">Register</button>
+    </form>
+  </div>
+</div>
+
+<div class="validation-errors" ng-show="registerForm.$invalid">
+  <label class="user-error" ng-show="registerForm.email.$error.required">
+    Email Required.
+  </label>
+  <label class="user-error" ng-show="registerForm.email.$error.pattern">
+    Email must be valid email format.
+  </label>
+  <label class="user-error" ng-show="registerForm.password.$error.required">
+    Password Required.
+  </label>
+  <label class="user-error" ng-show="registerForm.confirmPassword.$error.required">
+    Confirm Password Required.
+  </label>
+  <label class="user-error" 
+    ng-show="
+      registerForm.password.$error.minlength || 
+      registerForm.password.$error.maxlength || 
+      registerForm.confirmPassword.$error.minlength || 
+      registerForm.confirmPassword.$error.maxlength"
+    >
+    Passwords must be at between 6-12 characters.
+  </label>
+  <label class="user-error" ng-show="registerForm.password.$error.equals">
+    Passwords do not match.
+  </label>
+</div>

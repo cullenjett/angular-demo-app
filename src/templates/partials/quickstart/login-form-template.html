@@ -1,0 +1,63 @@
+<div class="user-container">
+  <div class="twelve columns center-text">
+    <form name="loginForm" ng-submit="authService.login(user)" novalidate>
+      <div class="row">    
+        <h3>Sign In</h3>
+        <div class="row">
+          <label>Email</label>
+          <input 
+            id="email" 
+            name="email"
+            class="u-full-width ng-invalid" 
+            type="text"  
+            ng-model="user.email"
+            ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"
+            required
+            />
+        </div>
+        
+        <div class="row">      
+          <div class="u-full-width">  
+            <label>Password</label>
+            <input 
+              id="password" 
+              name="password"
+              class="u-full-width" 
+              type="password" 
+              ng-model="user.password"
+              ng-minlength="6"
+              ng-maxlength="12"
+              required/>
+          </div>
+        </div>
+
+        <button id="signIn" class="button-primary form-button" type="submit" ng-disabled="loginForm.$invalid">Sign In</button>
+        <div class="row">
+          <a 
+            id="register" 
+            class="user-managment-link" 
+            ng-href="#register">Register</a>
+          <a 
+            id="forgot-password" 
+            class="user-managment-link" 
+            ng-href="#forgotPassword">Forgot Password?</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="validation-errors" ng-show="loginForm.$invalid">
+  <label class="user-error" ng-show="loginForm.email.$error.required">
+    Email Required.
+  </label>
+  <label class="user-error" ng-show="loginForm.email.$error.pattern">
+    Email must be valid email format.
+  </label>
+  <label class="user-error" ng-show="loginForm.password.$error.required">
+    Password Required.
+  </label>
+  <label class="user-error" ng-show="loginForm.password.$error.minlength || loginForm.password.$error.maxlength">
+    Passwords must be at between 6-12 characters.
+  </label>
+</div>
