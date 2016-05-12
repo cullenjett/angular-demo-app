@@ -27,6 +27,9 @@ gulp.task('html-prod', ['js-prod', 'css-prod'], function() {
 
 gulp.task('templates', function() {
   return gulp.src(paths.templates)
-    .pipe(templateCache())
+    .pipe(templateCache("templates.js", {
+      module: "templates",
+      standalone: true
+    }))
     .pipe(gulp.dest('tmp/'));
 });

@@ -19,10 +19,9 @@ gulp.task('local', function() {
   gulp.start(['html-dev', 'templates', 'css-dev', 'js-dev']);
 
   browserSync.init({
-    open: false,
-    server: {
-      baseDir: paths.outputDev
-    }
+    open: true,
+    notify: false,
+    server: paths.outputDev
   });
 
   gulp.watch(paths.html, htmlTasks);

@@ -4,23 +4,23 @@
       <h3>Register</h3>
       <div class="row">
         <label>Email</label>
-        <input 
-          id='email' 
+        <input
+          id='email'
           name='email'
-          class="u-full-width" 
-          type='email' 
-          ng-model="user.email" 
+          class="u-full-width"
+          type='email'
+          ng-model="user.email"
           ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"
           required>
       </div>
       <div class="row">
         <label>Password</label>
-        <input 
-          id='password' 
+        <input
+          id='password'
           name="password"
-          class="u-full-width" 
-          type='password' 
-          ng-model="user.password" 
+          class="u-full-width"
+          type='password'
+          ng-model="user.password"
           ng-minlength="6"
           ng-maxlength="12"
           equals="{{user.confirmPassword}}"
@@ -28,12 +28,12 @@
       </div>
       <div class="row">
         <label for="confirmPassword">Confirm Password</label>
-        <input 
+        <input
           id="confirmPassword"
           name="confirmPassword"
-          class="u-full-width" 
-          ng-model="user.confirmPassword" 
-          type='password' 
+          class="u-full-width"
+          ng-model="user.confirmPassword"
+          type='password'
           ng-minlength="6"
           ng-maxlength="12"
           equals="{{user.password}}"
@@ -59,11 +59,11 @@
   <label class="user-error" ng-show="registerForm.confirmPassword.$error.required">
     Confirm Password Required.
   </label>
-  <label class="user-error" 
+  <label class="user-error"
     ng-show="
-      registerForm.password.$error.minlength || 
-      registerForm.password.$error.maxlength || 
-      registerForm.confirmPassword.$error.minlength || 
+      registerForm.password.$error.minlength ||
+      registerForm.password.$error.maxlength ||
+      registerForm.confirmPassword.$error.minlength ||
       registerForm.confirmPassword.$error.maxlength"
     >
     Passwords must be at between 6-12 characters.

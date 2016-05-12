@@ -1,7 +1,6 @@
-var config = require('../../config.js');
+import config from "../../config.js"
 import Base from "../shared/quickbase-client"
 
-angular.module('templates', [])
 var quickstart_users = angular.module("quickstart-users", ['ngRoute', 'templates']);
 
 quickstart_users.constant('AUTH_EVENTS', {
@@ -29,11 +28,11 @@ quickstart_users.run(function ($rootScope, AUTH_EVENTS, AuthService, $location) 
 
 quickstart_users.config(function ($routeProvider, $locationProvider) {
   $routeProvider
-  .when('/login', { templateUrl: 'partials/quickstart/login-form-template.html', public: true })
-  .when('/register', { templateUrl: 'partials/quickstart/register-user-template.html', public: true })
-  .when('/forgotPassword', { templateUrl: 'partials/quickstart/forgot-password-template.html', public: true })
-  .when('/profile', { templateUrl: 'partials/quickstart/profile-template.html' })
-  .when('/changePassword', { templateUrl: 'partials/quickstart/change-password-template.html' })
+  .when('/login', { templateUrl: 'user-management/login-form.tmpl.html', public: true })
+  .when('/register', { templateUrl: 'user-management/register-user.tmpl.html', public: true })
+  .when('/forgotPassword', { templateUrl: 'user-management/forgot-password.tmpl.html', public: true })
+  .when('/profile', { templateUrl: 'user-management/profile.tmpl.html' })
+  .when('/changePassword', { templateUrl: 'user-management/change-password.tmpl.html' })
   .otherwise({ redirectTo: '/login' });
 })
 
