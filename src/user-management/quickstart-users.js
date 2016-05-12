@@ -1,5 +1,5 @@
-var config = require('../../../config.js');
-import Base from "./quickbase-client"
+var config = require('../../config.js');
+import Base from "../shared/quickbase-client"
 
 angular.module('templates', [])
 var quickstart_users = angular.module("quickstart-users", ['ngRoute', 'templates']);

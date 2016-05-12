@@ -1,14 +1,14 @@
-import './js/modules/quickstart-users';
+import './user-management/quickstart-users';
 import '../tmp/templates';
-import Base from "./js/modules/quickbase-client"
+import Base from "./shared/quickbase-client"
 
 var mainApp = angular.module("mainApp", ["quickstart-users"])
 
 mainApp.config(function ($routeProvider) {
   $routeProvider
-    .when('/', { 
-      templateUrl: 'partials/app/dashboard-template.html', 
-      controller: "DashboardController" 
+    .when('/', {
+      templateUrl: 'partials/app/dashboard-template.html',
+      controller: "DashboardController"
     })
 });
 

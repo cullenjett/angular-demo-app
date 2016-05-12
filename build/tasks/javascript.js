@@ -1,4 +1,3 @@
-var app = require('../../app');
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -12,6 +11,7 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var paths = require('../paths');
+var app = require(paths.config);
 
 gulp.task('js-dev', ['templates'], function(){
   return browserify(app.bootstrap, {debug: true})

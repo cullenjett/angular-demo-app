@@ -1,4 +1,3 @@
-var app = require('../../app');
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
@@ -6,6 +5,7 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var insert = require('gulp-insert');
 var paths = require('../paths');
+var app = require(paths.config);
 
 var htmlTasks = [ 'html-dev', browserSync.reload ];
 var templateTasks = [ 'templates', 'js-dev', browserSync.reload ];

@@ -1,8 +1,9 @@
-var app = require('../../app');
 var gulp = require('gulp');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var insert = require('gulp-insert');
+var paths = require('../paths');
+var app = require(paths.config);
 
 var deployTasks = [
   'js-prod',

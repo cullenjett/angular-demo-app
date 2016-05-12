@@ -1,4 +1,3 @@
-var app = require('../../app');
 var gulp = require('gulp');
 var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 var XML = require('pixl-xml');
@@ -7,6 +6,7 @@ var path = require('path');
 var notify = require('gulp-notify');
 var replace = require('gulp-replace');
 var paths = require('../paths');
+var app = require(paths.config);
 
 // push to QuickBase App
 gulp.task('upload-html', ['upload-assets'], function() {
@@ -108,6 +108,6 @@ function sendQBRequest(action, data, mainAPICall){
 
   var url = "https://" + app.baseConfig.realm + ".quickbase.com/db/" + dbid + "?act=" + action;
   req.open("POST", url, true);
-  req.setRequestHeader("Content-Type", "text/xml");  
+  req.setRequestHeader("Content-Type", "text/xml");
   req.send(data);
 }

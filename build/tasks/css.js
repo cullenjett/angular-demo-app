@@ -1,10 +1,10 @@
-var app = require('../../app');
 var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var insert = require('gulp-insert');
 var paths = require('../paths');
+var app = require(paths.config);
 
 gulp.task('css-prod', function() {
   return gulp.src(paths.css)
