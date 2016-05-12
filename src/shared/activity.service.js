@@ -27,11 +27,11 @@ export default class ActivityService {
     let currentUser = this.AuthService.currentUser().username
 
     let filterActivities = (activities) => {
-      return activities.filter(activity => activity.customerEmail === currentUser);
+      return activities.filter(activity => activity.customerEmail == currentUser);
     }
 
     if (this.activities) {
-      dfd.resolve(filterActivities)
+      dfd.resolve(filterActivities(this.activities))
     } else {
       this.quickbase.activities.doQuery({
         customerEmail: currentUser
