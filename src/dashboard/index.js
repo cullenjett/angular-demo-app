@@ -3,9 +3,10 @@ import DashboardComponent from "./dashboard.component";
 angular
   .module('app.dashboard', [])
 
-  .config(($routeProvider) => {
-    $routeProvider
-      .when('/', {
+  .config(($stateProvider) => {
+    $stateProvider
+      .state('dashboard', {
+        url: '/',
         template: "<dashboard></dashboard>"
       })
   })

@@ -13,25 +13,24 @@
               <img src="https://avatars2.githubusercontent.com/u/634423?v=3&s=200">
             </li>
             <li class="quickstart">
-              <a href="#/">QUICKSTART</a>
+              <a ui-sref="dashboard">QUICKSTART</a>
             </li>
 
             <li class="action" ng-if="isLoggedIn"><a ng-click="logout()">Sign Out</a></li>
-            <li class="action" ng-if="isLoggedIn"><a href="#/profile">Profile</a></li>
+            <li class="action" ng-if="isLoggedIn"><a ui-sref="profile">Profile</a></li>
             <li id="signedInAs" class="action" ng-if="isLoggedIn"><span>Signed in as: {{currentUser.name}}</span></li>
           </ul>
         </div>
         <div class="sub-nav"></div>
       </header>
 
-      <div ng-view></div>
+      <div ui-view></div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
-    <script src="https://code.angularjs.org/1.2.20/angular-sanitize.min.js"></script>
     <script src="https://s3.amazonaws.com/ais_libraries/BaseJS/4.8/base.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
     <script src="bundle.js"></script>
 	</body>
 </html>

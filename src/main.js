@@ -5,7 +5,7 @@ import "./shared";
 import "./dashboard";
 
 const DEPENDENCIES = [
-  'ngRoute',
+  'ui.router',
   'quickstart-users',
   'templates',
   'app.shared',

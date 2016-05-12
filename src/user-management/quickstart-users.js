@@ -1,7 +1,7 @@
 import config from "../../quickstart.config.js"
 import Base from "../shared/quickbase-client"
 
-var quickstart_users = angular.module("quickstart-users", ['ngRoute', 'templates']);
+var quickstart_users = angular.module("quickstart-users", ['ui.router', 'templates']);
 
 quickstart_users.constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
@@ -15,28 +15,45 @@ quickstart_users.run(['AuthService', function (AuthService) {
 }])
 
 // Check Auth on Nav
-quickstart_users.run(function ($rootScope, AUTH_EVENTS, AuthService, $location) {
-  $rootScope.$on('$routeChangeStart', function (event, next) {
+quickstart_users.run(function ($rootScope, $state, AUTH_EVENTS, AuthService) {
+  $rootScope.$on('$stateChangeStart', function (event, next) {
     if(!next.public){
       if(!AuthService.isLoggedIn()){
-        $location.path("/login");
+        $state.go('login')
         event.preventDefault();
       };
     };
   });
 })
 
-quickstart_users.config(function ($routeProvider, $locationProvider) {
-  $routeProvider
-  .when('/login', { templateUrl: 'user-management/login-form.tmpl.html', public: true })
-  .when('/register', { templateUrl: 'user-management/register-user.tmpl.html', public: true })
-  .when('/forgotPassword', { templateUrl: 'user-management/forgot-password.tmpl.html', public: true })
-  .when('/profile', { templateUrl: 'user-management/profile.tmpl.html' })
-  .when('/changePassword', { templateUrl: 'user-management/change-password.tmpl.html' })
-  .otherwise({ redirectTo: '/login' });
+quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('login', {
+      url: '/login',
+      templateUrl: 'user-management/login-form.tmpl.html',
+      public: true
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'user-management/register-user.tmpl.html',
+      public: true
+    })
+    .state('forgotPassword', {
+      url: '/forgotPassword',
+      templateUrl: 'user-management/forgot-password.tmpl.html',
+      public: true
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'user-management/profile.tmpl.html'
+    })
+    .state('changePassword', { url: '/changePassword',
+      templateUrl: 'user-management/change-password.tmpl.html' })
+
+  $urlRouterProvider.otherwise('/login');
 })
 
-quickstart_users.controller('ApplicationController', function ($scope, $route, $location, AUTH_EVENTS, AuthService) {
+quickstart_users.controller('ApplicationController', function ($scope, $state, AUTH_EVENTS, AuthService) {
   $scope.isLoggedIn = AuthService.isLoggedIn();
 
   $scope.logout = AuthService.logout;
@@ -46,14 +63,14 @@ quickstart_users.controller('ApplicationController', function ($scope, $route, $
   $scope.$on(AUTH_EVENTS.loginSuccess, function(){
     $scope.currentUser = AuthService.currentUser();
     $scope.isLoggedIn = true;
-    $location.path("/");
+    $state.go('dashboard')
     $scope.$apply();
   });
 
   $scope.$on(AUTH_EVENTS.logoutSuccess, function(){
     $scope.currentUser = null;
     $scope.isLoggedIn = false;
-    $location.path("/login");
+    $state.go('login')
   });
 })
 
@@ -98,7 +115,7 @@ quickstart_users.service('Flash', function(){
   }
 });
 
-quickstart_users.service('AuthService', function ($http, $rootScope, $route, AUTH_EVENTS, Flash) {
+quickstart_users.service('AuthService', function ($http, $rootScope, AUTH_EVENTS, Flash) {
   this.ticket = function(){
     var cookie = BaseHelpers.getCookie("quickstart_session");
 
