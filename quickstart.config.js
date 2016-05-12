@@ -36,18 +36,6 @@ module.exports = {
           viewKey: 11,
           modifyKey: 12
         }
-      },
-      activities: {
-        dbid: "bkqdhycek",
-        rid: 3,
-        date: 6,
-        type: 7,
-        customerName: 8,
-        customerEmail: 12,
-        quickstart: {
-          viewKey: 34,
-          modifyKey: 35
-        }
       }
     }
   }

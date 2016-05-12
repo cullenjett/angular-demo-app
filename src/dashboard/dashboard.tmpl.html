@@ -1,12 +1,2 @@
 <h1>I'm a dashboard!</h1>
-<h3>{{$ctrl.currentUser.username}}</h3>
-
-<h3>My Activities</h3>
-<ul>
-  <li ng-repeat="activity in $ctrl.myActivities">{{activity | json}}</li>
-</ul>
-
-<h3>All Activities</h3>
-<ul>
-  <li ng-repeat="activity in $ctrl.activities">{{activity | json}}</li>
-</ul>
+<h3>{{$ctrl.currentUser | json}}</h3>
