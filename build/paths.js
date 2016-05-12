@@ -5,5 +5,5 @@ module.exports = {
   templates: "src/**/*.tmpl.html",
   outputDev: "./tmp",
   outputProd: "./dist",
-  config: "../../config.js"
+  config: "../../quickstart.config.js"
 };

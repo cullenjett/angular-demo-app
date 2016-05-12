@@ -1,4 +1,4 @@
-import config from "../../config.js"
+import config from "../../quickstart.config.js"
 import Base from "../shared/quickbase-client"
 
 var quickstart_users = angular.module("quickstart-users", ['ngRoute', 'templates']);
