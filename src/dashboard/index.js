@@ -5,7 +5,7 @@ angular
 
   .config(($stateProvider) => {
     $stateProvider
-      .state('dashboard', {
+      .state('app.dashboard', {
         url: '/',
         template: "<dashboard></dashboard>"
       })

@@ -1,31 +1,12 @@
 <html>
 	<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="bundle.css">
 	</head>
 
 	<body>
-    <div id="alert-flyover"></div>
-    <div ng-controller="ApplicationController">
-      <header>
-        <div class="nav">
-          <ul>
-            <li class="logo">
-              <img src="https://avatars2.githubusercontent.com/u/634423?v=3&s=200">
-            </li>
-            <li class="quickstart">
-              <a ui-sref="dashboard">QUICKSTART</a>
-            </li>
-
-            <li class="action" ng-if="isLoggedIn"><a ng-click="logout()">Sign Out</a></li>
-            <li class="action" ng-if="isLoggedIn"><a ui-sref="profile">Profile</a></li>
-            <li id="signedInAs" class="action" ng-if="isLoggedIn"><span>Signed in as: {{currentUser.name}}</span></li>
-          </ul>
-        </div>
-        <div class="sub-nav"></div>
-      </header>
-
-      <div ui-view></div>
-    </div>
+    <div ui-view class="layout-row"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://s3.amazonaws.com/ais_libraries/BaseJS/4.8/base.min.js"></script>

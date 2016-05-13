@@ -1,6 +1,20 @@
-<h1>I'm a dashboard!</h1>
-<h3>{{$ctrl.currentUser | json}}</h3>
+<h1 class="page-header">Dashboard</h1>
 
-<ul>
-  <li ng-repeat="request in $ctrl.myRequests">{{request}}</li>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Priority</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="request in $ctrl.myRequests">
+      <td>{{request.type}}</td>
+      <td>{{request.description}}</td>
+      <td>{{request.priority}}</td>
+      <td>{{request.status}}</td>
+    </tr>
+  </tbody>
+</table>

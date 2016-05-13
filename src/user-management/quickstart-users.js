@@ -28,26 +28,26 @@ quickstart_users.run(function ($rootScope, $state, AUTH_EVENTS, AuthService) {
 
 quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('login', {
+    .state('app.login', {
       url: '/login',
       templateUrl: 'user-management/login-form.tmpl.html',
       public: true
     })
-    .state('register', {
+    .state('app.register', {
       url: '/register',
       templateUrl: 'user-management/register-user.tmpl.html',
       public: true
     })
-    .state('forgotPassword', {
+    .state('app.forgotPassword', {
       url: '/forgotPassword',
       templateUrl: 'user-management/forgot-password.tmpl.html',
       public: true
     })
-    .state('profile', {
+    .state('app.profile', {
       url: '/profile',
       templateUrl: 'user-management/profile.tmpl.html'
     })
-    .state('changePassword', { url: '/changePassword',
+    .state('app.changePassword', { url: '/changePassword',
       templateUrl: 'user-management/change-password.tmpl.html' })
 
   $urlRouterProvider.otherwise('/login');
@@ -63,7 +63,7 @@ quickstart_users.controller('ApplicationController', function ($scope, $state, A
   $scope.$on(AUTH_EVENTS.loginSuccess, function(){
     $scope.currentUser = AuthService.currentUser();
     $scope.isLoggedIn = true;
-    $state.go('dashboard')
+    $state.go('app.dashboard')
     $scope.$apply();
   });
 
