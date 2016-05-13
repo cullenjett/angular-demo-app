@@ -1,6 +1,6 @@
 class DashboardCtrl {
-  constructor(AuthService) {
-    this.currentUser = AuthService.currentUser();
+  constructor(UserService) {
+    UserService.currentUser().then(user => { this.currentUser = user; })
   }
 }
 

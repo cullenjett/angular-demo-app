@@ -17,6 +17,8 @@ module.exports = {
       users: {
         dbid: "bkuvskxhu",
         id: 3,
+        name: 6,
+        username: 7,
         relatedClient: 12,
         relatedClientName: 13,
         quickstart: {
