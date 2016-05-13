@@ -1,15 +1,17 @@
 import "./user-management/quickstart-users";
 import "../tmp/templates";
 
-import "./shared";
 import "./dashboard";
+import "./request";
+import "./shared";
 
 const DEPENDENCIES = [
   'ui.router',
   'quickstart-users',
   'templates',
-  'app.shared',
-  'app.dashboard'
+  'app.dashboard',
+  'app.request',
+  'app.shared'
 ];
 
 angular.module('app', DEPENDENCIES)

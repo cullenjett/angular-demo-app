@@ -15,7 +15,8 @@ export default class UserService {
     } else {
       this.quickbase.users.doQuery({
         username: this.authToken.username
-      }, {}, (user) => {
+      }, {}, (res) => {
+        let user = res[0];
         this.current = user;
         dfd.resolve(user);
       })

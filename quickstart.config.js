@@ -38,6 +38,20 @@ module.exports = {
           viewKey: 11,
           modifyKey: 12
         }
+      },
+      requests: {
+        dbid: "bkuvskx6m",
+        id: 3,
+        type: 6,
+        description: 7,
+        priority: 8,
+        title: 9,
+        status: 16,
+        relatedUser: 17,
+        relatedUserName: 18,
+        relatedUserUsername: 19,
+        relatedClient: 20,
+        relatedClientName: 21,
       }
     }
   }
