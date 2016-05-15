@@ -1,14 +1,24 @@
-<div class="container">
-  <h3>Profile</h3>
-  <hr>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+    <h1 class="text-center">Profile</h1>
 
-  <form>
-    <label>Name:</label>
-    <h4>{{currentUser.name}}</h4>
-    <label>Last Logged In:</label>
-    <h4>{{currentUser.lastLoggedIn}}</h4>
+    <form name="profileForm">
+      <fieldset>
+
+        <fieldset class="form-group">
+          <label for="name" class="control-label">Your Name</label>
+          <input type="text" class="form-control">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="name" class="control-label">Last Logged In:</label>
+          <input type="text" class="form-control">
+        </fieldset>
+
+      </fieldset>
+    </form>
 
     <hr>
-    <a id="changePassword" ui-sref="changePassword" class="button">Change Password</a>
-  </form>
+    <a id="changePassword" ui-sref="app.changePassword" class="button">Change Password</a>
+  </div>
 </div>
