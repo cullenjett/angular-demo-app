@@ -9,11 +9,6 @@ $brand-info:    #5bc0de;
 $brand-warning: #f0ad4e;
 $brand-danger:  #d9534f;
 
-#signedInAs{
-	color: white;
-	cursor: auto;
-}
-
 #alert-flyover{
 	position: fixed;
 	width: 300px;
@@ -41,134 +36,22 @@ $brand-danger:  #d9534f;
 	background-color: $brand-success;
 }
 
-.form-button:disabled{
-	border: 0px;
-	background-color: #B5B5B5;
-}
-
 .validation-errors{
 	position: absolute;
 	left: 0px;
 	bottom: 10px;
-	width: 250px;
+	width: 30rem;
+  font-size: 1.4rem;
+  font-weight: 200;
 	text-align: left;
 }
 
 .user-error{
+  display: block;
+  margin-bottom: 1rem;
 	width: 100%;
 	background-color: $brand-info;
-	padding: 10px;
-	font-size: 12px;
+	padding: 1rem 1rem 1rem 4rem;
 	color: white;
 	border-radius: 0px 4px 4px 0px;
-}
-
-.nav {
-	ul {
-  	list-style: none;
-  	background-color: #333;
-  	margin: 0;
-  	text-align: right;
-  	height: 50px;
-  	padding-top: 10px;
-	}
-
-	li {
-	  border-bottom: none;
-	  height: 35px;
-	  line-height: 40px;
-	  font-size: 14px;
-	  display: inline-block;
-	  padding-right: 20px;
-	  cursor: pointer;
-	  font-weight: 100;
-	}
-
-  .quickstart{
-  	float: left;
-  	font-size: 20px;
-  	margin-left: 70px;
-  }
-
-  .logo{
-  	position: absolute;
-  	left: 0px;
-  	top: 0px;
-  	float: left;
-  	width: 55px;
-  	height: 55px;
-  	float: left;
-
-  	img{
-  		height: 100%;
-  		width: 100%;
-  	}
-  }
-
-  .action{
-  	float: right;
-  }
-
-	a {
-	  text-decoration: none;
-	  color: #fff;
-	  display: block;
-	  transition: .3s background-color;
-	}
-}
-
-.sub-nav{
-	background-color: $brand-primary;
-	width: 100%;
-	height: 25px;
-}
-
-#forgot-password, #register{
-	cursor: pointer;
-	float: right;
-	position: absolute;
-  bottom: 15px;
-}
-
-#changePassword{
-	cursor: pointer;
-}
-
-#register{
-  right: 15px;
-}
-
-#forgot-password{
-	left: 15px;
-}
-
-.navbar{
-	position: absolute;
-	height: 60px;
-	width: 100%;
-	background-color: black;
-}
-
-.user-container{
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 50px;
-	width: 400px;
-	height: 400px;
-	padding: 10px;
-	border: 1px solid #CCC;
-	border-radius: 4px;
-	box-shadow: 4px 4px 4px #E6E6E6;
-	text-align: center;
-	position: relative;
-	background-color: white;
-
-	h3{
-		font-weight: 300px;
-	}
-
-	label{
-		float: left;
-		font-weight: 100;
-	}
 }

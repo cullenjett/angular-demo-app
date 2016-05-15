@@ -3,10 +3,11 @@ $light-grey: #999;
 $white: #f9f9f9;
 
 .header {
-  background: $light-grey;
+  background: $dark-grey;
   color: $white;
   padding: 0 4rem;
   margin-bottom: 4rem;
+  box-shadow: 0 .5rem 0 #5bc0de;
 }
 
 .header__row {
