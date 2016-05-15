@@ -28,6 +28,10 @@ $white: #f9f9f9;
   color: darken($white, 10)
 }
 
+.header__icon {
+  margin: 0 .5rem;
+}
+
 .header__breadcrumbs {
   font-size: 3.2rem;
   font-weight: 200;
