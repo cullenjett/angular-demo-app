@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var insert = require('gulp-insert');
+var notify = require('gulp-notify');
 
 var paths = require('../paths');
 var app = require(paths.app);
@@ -13,6 +14,19 @@ var templateTasks = [ 'templates', 'js-dev', browserSync.reload ];
 var jsTasks = [ 'js-dev', browserSync.reload ];
 var cssTasks = [ 'css-dev' ];
 var lambdaTasks = [ 'upload-config' ];
+
+function interceptErrors(error) {
+  var args = Array.prototype.slice.call(arguments);
+
+  // Send error to notification center with gulp-notify
+  notify.onError({
+    title: 'Compile Error',
+    message: '<%= error.message %>'
+  }).apply(this, args);
+
+  // Keep gulp from hanging on this task
+  this.emit('end');
+};
 
 gulp.task('watch', ['local']);
 
@@ -35,6 +49,7 @@ gulp.task('local', function() {
 gulp.task('css-dev', function() {
   return gulp.src(paths.css)
     .pipe(sass())
+    .on('error', interceptErrors)
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest(paths.outputDev))
     .pipe(browserSync.stream());

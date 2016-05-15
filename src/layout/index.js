@@ -1,5 +1,5 @@
-import SidenavComponent from './sidenav.component'
+import Header from './header.component';
 
 angular
   .module('app.layout', [])
-  .component('appSidenav', SidenavComponent)
+  .component('appHeader', Header)
