@@ -19,7 +19,7 @@ quickstart_users.run(function ($rootScope, $state, AUTH_EVENTS, AuthService) {
   $rootScope.$on('$stateChangeStart', function (event, next) {
     if(!next.public){
       if(!AuthService.isLoggedIn()){
-        $state.go('login')
+        $state.go('app.login')
         event.preventDefault();
       };
     };
@@ -70,7 +70,7 @@ quickstart_users.controller('ApplicationController', function ($scope, $state, A
   $scope.$on(AUTH_EVENTS.logoutSuccess, function(){
     $scope.currentUser = null;
     $scope.isLoggedIn = false;
-    $state.go('login')
+    $state.go('app.login')
   });
 })
 

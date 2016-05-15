@@ -5,28 +5,31 @@ $white: #f9f9f9;
 .header {
   background: $light-grey;
   color: $white;
-  padding: 1rem 4rem;
+  padding: 0 4rem;
+  margin-bottom: 4rem;
 }
 
 .header__row {
-  line-height: 2rem;
+  line-height: 4rem;
 }
 
 .header__link {
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   padding: .5rem 2rem;
   cursor: pointer;
+  transition: color .1s;
 }
 .header__link:first-child { padding-left: 0; }
 .header__link:last-child { padding-right: 0; }
 
 .header__link:hover {
-  color: darken($white, 15)
+  color: darken($white, 10)
 }
 
 .header__breadcrumbs {
-  font-size: 2.8rem;
-  line-height: 10rem;
+  font-size: 3.2rem;
+  font-weight: 200;
+  line-height: 6rem;
 }

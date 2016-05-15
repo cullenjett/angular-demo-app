@@ -1,3 +1,10 @@
+$serif: 'Source Sans Pro', sans-serif;
+
+html,
+body {
+  font-family: $serif;
+}
+
 a {
   color: inherit;
 }
