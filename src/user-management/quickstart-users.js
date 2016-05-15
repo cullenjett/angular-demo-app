@@ -3,6 +3,9 @@ import Base from "../shared/quickbase-client"
 
 var quickstart_users = angular.module("quickstart-users", ['ui.router', 'templates']);
 
+import AuthComponent from './auth.component';
+quickstart_users.component('auth', AuthComponent);
+
 quickstart_users.constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
   loginFailed: 'auth-login-failed',
@@ -30,7 +33,7 @@ quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('app.login', {
       url: '/login',
-      templateUrl: 'user-management/login-form.tmpl.html',
+      template: "<auth type='login'></auth>",
       public: true
     })
     .state('app.register', {

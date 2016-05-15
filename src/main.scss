@@ -5,10 +5,13 @@ body {
   font-size: 1.6rem;
 }
 
-a {
+a,
+a:focus {
   color: inherit;
 }
 
-a:hover {
+a:hover,
+a:focus,
+a:visited {
   text-decoration: none;
 }
