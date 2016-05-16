@@ -2,7 +2,7 @@
   <div class="row header__row text-right">
     <div class="col-sm-12">
       <span class="header__link no-hover">Advantage Integrated Solutions</span>
-      <a ui-sref="app.profile" class="header__link">
+      <a ui-sref="app.profile" ui-sref-active="active" class="header__link">
         <i class="header__icon fa fa-user"></i>
         {{ $root.currentUser.name }}
       </a>
@@ -20,8 +20,8 @@
   </div>
   <div class="row header__row">
     <div class="col-sm-12">
-      <a ui-sref="app.dashboard" class="header__link">Dashboard</a>
-      <a ui-sref="app.requests" class="header__link">Requests</a>
+      <a ui-sref="app.dashboard" ui-sref-active="active" class="header__link">Dashboard</a>
+      <a ui-sref="app.requests" ui-sref-active="active" class="header__link">Requests</a>
     </div>
   </div>
 </div>

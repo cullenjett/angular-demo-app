@@ -1,6 +1,7 @@
 $dark-grey: #404040;
 $light-grey: #999;
 $white: #f9f9f9;
+$brand-info: #5bc0de;
 
 html,
 body {
@@ -27,18 +28,25 @@ body {
 }
 
 .header__link {
+  position: relative;
   display: inline-block;
   font-size: 1.4rem;
+  color: $light-grey;
   text-transform: uppercase;
-  padding: .5rem 2rem;
+  padding: .5rem 1rem;
+  margin: 0 1.5rem;
   cursor: pointer;
   transition: color .1s;
 }
-.header__link:first-child { padding-left: 0; }
-.header__link:last-child { padding-right: 0; }
+.header__link:first-child { margin-left: 0; }
+.header__link:last-child { margin-right: 0; }
 
 .header__link:hover {
-  color: darken($white, 10)
+  color: $white;
+}
+
+.header__link.active {
+  color: $brand-info;
 }
 
 .header__icon {
@@ -59,4 +67,5 @@ body {
   font-size: 3.8rem;
   font-weight: 200;
   line-height: 5rem;
+  letter-spacing: -1px;
 }
