@@ -20,12 +20,24 @@ quickstart_users.run(['AuthService', function (AuthService) {
 // Check Auth on Nav
 quickstart_users.run(function ($rootScope, $state, AUTH_EVENTS, AuthService) {
   $rootScope.$on('$stateChangeStart', function (event, next) {
-    if(!next.public){
-      if(!AuthService.isLoggedIn()){
-        $state.go('app.login')
-        event.preventDefault();
-      };
+    $rootScope.currentUser = AuthService.currentUser();
+
+    if(!next.public && !AuthService.isLoggedIn()){
+      $state.go('app.login')
+      event.preventDefault();
     };
+  });
+
+  $rootScope.$on(AUTH_EVENTS.loginSuccess, function(){
+    $rootScope.currentUser = AuthService.currentUser();
+    $rootScope.isLoggedIn = true;
+    $state.go('app.dashboard');
+  });
+
+  $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(){
+    $rootScope.currentUser = null;
+    $rootScope.isLoggedIn = false;
+    $state.go('app.login');
   });
 })
 
@@ -61,27 +73,6 @@ quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
     })
 
   $urlRouterProvider.otherwise('/');
-})
-
-quickstart_users.controller('ApplicationController', function ($scope, $state, AUTH_EVENTS, AuthService) {
-  $scope.isLoggedIn = AuthService.isLoggedIn();
-
-  $scope.logout = AuthService.logout;
-  $scope.authService = AuthService;
-
-  $scope.currentUser = AuthService.currentUser();
-  $scope.$on(AUTH_EVENTS.loginSuccess, function(){
-    $scope.currentUser = AuthService.currentUser();
-    $scope.isLoggedIn = true;
-    $state.go('app.dashboard')
-    $scope.$apply();
-  });
-
-  $scope.$on(AUTH_EVENTS.logoutSuccess, function(){
-    $scope.currentUser = null;
-    $scope.isLoggedIn = false;
-    $state.go('app.login')
-  });
 })
 
 quickstart_users.directive('equals', function() {

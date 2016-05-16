@@ -1,7 +1,7 @@
 class AuthCtrl {
   constructor(AuthService) {
     this.AuthService = AuthService;
-    this.title = this.authType === 'login' ? "Sign In" : "Register";
+    this.title = (this.authType === 'login') ? "Sign In" : "Register";
   }
 
   submit(formData) {
