@@ -55,7 +55,7 @@ quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'user-management/change-password.tmpl.html'
     })
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/');
 })
 
 quickstart_users.controller('ApplicationController', function ($scope, $state, AUTH_EVENTS, AuthService) {
@@ -157,7 +157,7 @@ quickstart_users.service('AuthService', function ($http, $rootScope, AUTH_EVENTS
     };
   };
 
-  this.login = function (user, onLoginAction){
+  this.login = function (user){
     $("#signIn").attr("disabled", "disabled").html("Signing in...");
 
     var currentUser = { username: user.email, password: user.password };

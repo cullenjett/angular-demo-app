@@ -1,5 +1,7 @@
 class DashboardCtrl {
-  constructor(UserService, RequestService) {
+  constructor(UserService, RequestService, Flash) {
+    this.myRequests = [];
+
     UserService.currentUser().then(user => {
       this.currentUser = user;
       return RequestService.findForUser(user.id)
