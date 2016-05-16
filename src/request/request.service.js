@@ -4,13 +4,15 @@ export default class RequestService {
     this.quickbase = quickbase;
   }
 
-  findForUser(id) {
+  where(query) {
     let dfd = this.$q.defer();
 
-    this.quickbase.requests.doQuery({
-      relatedUser: id
-    }, {}, (requests) => {
-      dfd.resolve(requests);
+    this.quickbase.requests.doQuery(query, {}, (res) => {
+      if (res.error) {
+        dfd.reject(res.error)
+      } else {
+        dfd.resolve(res);
+      }
     })
 
     return dfd.promise;

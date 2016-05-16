@@ -1,14 +1,14 @@
 class DashboardCtrl {
   constructor(UserService, RequestService, Flash) {
-    this.myRequests = [];
+    this.recentRequests = [];
     this.isLoading = true;
 
     UserService.currentUser().then(user => {
       this.currentUser = user;
-      return RequestService.findForUser(user.id)
+      return RequestService.where({ relatedClient: user.relatedClient })
     }).then(requests => {
       this.isLoading = false;
-      this.myRequests = requests;
+      this.recentRequests = requests;
     })
   }
 }
