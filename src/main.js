@@ -24,6 +24,22 @@ angular
         abstract: true,
         templateUrl: 'layout/app-layout.tmpl.html'
       })
+
+    $urlRouterProvider.otherwise('/')
+  })
+  .run($rootScope => {
+    // change page title based on state
+    $rootScope.$on('$stateChangeSuccess', (event, nextState) => {
+      $rootScope.setPageTitle(nextState.title);
+    });
+
+    // Helper method for setting the page's title
+    $rootScope.setPageTitle = (title) => {
+      $rootScope.pageTitle = '';
+      if (title) {
+        $rootScope.pageTitle += title;
+      }
+    };
   })
 
 angular.bootstrap(document, ['app']);

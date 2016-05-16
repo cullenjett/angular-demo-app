@@ -1,4 +1,6 @@
-<table class="table sortable-table">
+<span class="spinner" ng-if="$ctrl.isLoading"></span>
+
+<table class="table sortable-table" ng-if="!$ctrl.isLoading">
   <thead>
     <tr>
       <th

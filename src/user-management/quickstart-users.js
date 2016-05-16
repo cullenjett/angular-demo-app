@@ -34,25 +34,30 @@ quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
     .state('app.login', {
       url: '/login',
       template: "<auth type='login'></auth>",
-      public: true
+      public: true,
+      title: 'Sign In'
     })
     .state('app.register', {
       url: '/register',
       templateUrl: 'user-management/register-user.tmpl.html',
-      public: true
+      public: true,
+      title: 'Register'
     })
     .state('app.forgotPassword', {
       url: '/forgot-password',
       templateUrl: 'user-management/forgot-password.tmpl.html',
-      public: true
+      public: true,
+      title: 'Forgot Password'
     })
     .state('app.profile', {
       url: '/profile',
-      templateUrl: 'user-management/profile.tmpl.html'
+      templateUrl: 'user-management/profile.tmpl.html',
+      title: 'Profile'
     })
     .state('app.changePassword', {
       url: '/change-password',
-      templateUrl: 'user-management/change-password.tmpl.html'
+      templateUrl: 'user-management/change-password.tmpl.html',
+      title: 'Change Password'
     })
 
   $urlRouterProvider.otherwise('/');

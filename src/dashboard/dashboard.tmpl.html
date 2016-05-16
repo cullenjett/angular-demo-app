@@ -1,8 +1,9 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-xs-12">
     <sortable-table
       data="$ctrl.myRequests"
-      field-list="['type', 'description', 'priority', 'status', 'dateCreated']">
+      field-list="['type', 'description', 'priority', 'status', 'dateCreated']"
+      async="true">
     </sortable-table>
   </div>
 </div>

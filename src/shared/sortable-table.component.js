@@ -3,9 +3,11 @@ class SortableTableCtrl {
     this.columns = {};
     this.sortOn = '';
     this.sortReverse = false;
+    this.isLoading = (this.async && this.async === 'true');
 
     $scope.$watch('$ctrl.data', (newVal, oldVal) => {
       if (newVal && newVal.length) {
+        this.isLoading = false;
         this.calculateLayout(newVal);
       }
     });
@@ -76,7 +78,8 @@ class SortableTableCtrl {
 export default {
   bindings: {
     data: '=',
-    fieldList: '='
+    fieldList: '=',
+    async: '@'
   },
   templateUrl: 'shared/sortable-table.tmpl.html',
   controller: SortableTableCtrl

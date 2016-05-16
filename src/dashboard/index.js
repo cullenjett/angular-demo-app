@@ -7,7 +7,8 @@ angular
     $stateProvider
       .state('app.dashboard', {
         url: '/',
-        template: "<dashboard></dashboard>"
+        template: "<dashboard></dashboard>",
+        title: 'Dashboard'
       })
   })
 

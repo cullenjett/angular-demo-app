@@ -15,3 +15,28 @@ a:focus,
 a:visited {
   text-decoration: none;
 }
+
+.spinner {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border: 1rem double;
+  border-radius: 50%;
+  border-color: transparent #999 #999 #999;
+  margin: 0 auto;
+  animation: spin 800ms infinite linear;
+  -webkit-animation: spin 800ms infinite linear;
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
