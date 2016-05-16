@@ -10,7 +10,7 @@ var paths = require('../paths');
 var app = require(paths.app);
 
 var htmlTasks = [ 'html-dev', browserSync.reload ];
-var templateTasks = [ 'templates', 'js-dev', browserSync.reload ];
+var templateTasks = [ 'templates', 'js-dev', 'html-dev', browserSync.reload ];
 var jsTasks = [ 'js-dev', browserSync.reload ];
 var cssTasks = [ 'css-dev' ];
 var lambdaTasks = [ 'upload-config' ];
