@@ -45,13 +45,13 @@ quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('app.login', {
       url: '/login',
-      template: "<auth type='login'></auth>",
+      template: "<auth type='signIn'></auth>",
       public: true,
       title: 'Sign In'
     })
     .state('app.register', {
       url: '/register',
-      templateUrl: 'user-management/register-user.tmpl.html',
+      template: "<auth type='register'></auth>",
       public: true,
       title: 'Register'
     })
@@ -151,11 +151,11 @@ quickstart_users.service('AuthService', function ($http, $rootScope, $q, AUTH_EV
     };
   };
 
-  this.login = function (user){
+  this.attemptAuth = function(type, user) {
     var dfd = $q.defer();
     var currentUser = { username: user.email, password: user.password };
 
-    Base.quickstart.signIn(currentUser, function(response){
+    Base.quickstart[type](currentUser, function(response){
       if (response.error) {
         $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         Flash.error(response.error.message);
@@ -172,20 +172,6 @@ quickstart_users.service('AuthService', function ($http, $rootScope, $q, AUTH_EV
   this.logout = function () {
     Base.quickstart.signOut(function(response){
       $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
-    });
-  };
-
-  this.createUser = function(user){
-    $("#signUp").attr("disabled", "disabled").html("Processing...");
-
-    var user = { username: user.email, password: user.password };
-    Base.quickstart.register(user, function(response){
-      if(response.error){
-        Flash.error(response.error.message);
-        $("#signUp").removeAttr("disabled").html("Register");
-      }else{
-        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-      };
     });
   };
 

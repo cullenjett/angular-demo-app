@@ -1,15 +1,15 @@
 class AuthCtrl {
   constructor(AuthService) {
     this.AuthService = AuthService;
-    this.title = (this.authType === 'login') ? "Sign In" : "Register";
+    this.title = (this.authType === 'signIn') ? "Sign In" : "Register";
   }
 
   submit(formData) {
     this.isSubmitting = true;
 
-    this.AuthService.login(formData).then(res => {
+    this.AuthService.attemptAuth(this.authType, formData).then(res => {
       this.isSubmitting = false;
-    })
+    });
   }
 }
 
