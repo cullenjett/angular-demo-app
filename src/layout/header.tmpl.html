@@ -1,23 +1,27 @@
 <div class="header container-fluid">
   <div class="row header__row text-right">
     <div class="col-sm-12">
-      <span class="header__link">Advantage Integrated Solutions</span>
+      <span class="header__link no-hover">Advantage Integrated Solutions</span>
       <a ui-sref="app.profile" class="header__link">
         <i class="header__icon fa fa-user"></i>
         {{ $root.currentUser.name }}
-        <!-- Cullen Jett -->
       </a>
     </div>
   </div>
   <div class="row header__row">
     <div class="col-sm-12">
-      <span class="header__breadcrumbs">{{$root.pageTitle}}</span>
+      <p class="header__breadcrumbs">
+        <span class="header__img-wrapper">
+          <img src="https://avatars2.githubusercontent.com/u/634423?v=3&s=200" alt="Advantage Integrated Solutions" style="width: 4rem;">
+        </span>
+        {{ $root.pageTitle }}
+      </p>
     </div>
   </div>
   <div class="row header__row">
     <div class="col-sm-12">
       <a ui-sref="app.dashboard" class="header__link">Dashboard</a>
-      <span class="header__link">Requests</span>
+      <span class="header__link no-hover">Requests</span>
     </div>
   </div>
 </div>

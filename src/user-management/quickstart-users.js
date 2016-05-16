@@ -18,12 +18,12 @@ quickstart_users.run(['AuthService', function (AuthService) {
 }])
 
 // Check Auth on Nav
-quickstart_users.run(function ($rootScope, $state, AUTH_EVENTS, AuthService) {
+quickstart_users.run(function ($rootScope, $state, Flash, AUTH_EVENTS, AuthService) {
   $rootScope.$on('$stateChangeStart', function (event, next) {
     $rootScope.currentUser = AuthService.currentUser();
 
     if(!next.public && !AuthService.isLoggedIn()){
-      $state.go('app.login')
+      $state.go('app.login');
       event.preventDefault();
     };
   });
@@ -71,8 +71,6 @@ quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'user-management/change-password.tmpl.html',
       title: 'Change Password'
     })
-
-  $urlRouterProvider.otherwise('/');
 })
 
 quickstart_users.directive('equals', function() {
@@ -116,7 +114,7 @@ quickstart_users.service('Flash', function(){
   }
 });
 
-quickstart_users.service('AuthService', function ($http, $rootScope, AUTH_EVENTS, Flash) {
+quickstart_users.service('AuthService', function ($http, $rootScope, $q, AUTH_EVENTS, Flash) {
   this.ticket = function(){
     var cookie = BaseHelpers.getCookie("quickstart_session");
 
@@ -154,19 +152,21 @@ quickstart_users.service('AuthService', function ($http, $rootScope, AUTH_EVENTS
   };
 
   this.login = function (user){
-    $("#signIn").attr("disabled", "disabled").html("Signing in...");
-
+    var dfd = $q.defer();
     var currentUser = { username: user.email, password: user.password };
-    Base.quickstart.signIn(currentUser, function(response){
-      if(response.error){
-        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
 
+    Base.quickstart.signIn(currentUser, function(response){
+      if (response.error) {
+        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         Flash.error(response.error.message);
-        $("#signIn").removeAttr("disabled").html("Sign In");
-      }else{
+        dfd.resolve(false);
+      } else {
         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+        dfd.resolve(true)
       };
     });
+
+    return dfd.promise;
   };
 
   this.logout = function () {

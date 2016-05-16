@@ -25,19 +25,18 @@ angular
         templateUrl: 'layout/app-layout.tmpl.html'
       })
 
-    $urlRouterProvider.otherwise('/')
+    $urlRouterProvider.otherwise('/');
   })
   .run($rootScope => {
-    // change page title based on state
+    // Change page title based on state
     $rootScope.$on('$stateChangeSuccess', (event, nextState) => {
       $rootScope.setPageTitle(nextState.title);
     });
 
     // Helper method for setting the page's title
     $rootScope.setPageTitle = (title) => {
-      $rootScope.pageTitle = '';
       if (title) {
-        $rootScope.pageTitle += title;
+        $rootScope.pageTitle = title;
       }
     };
   })

@@ -5,8 +5,11 @@ class AuthCtrl {
   }
 
   submit(formData) {
-    // TODO: AuthService needs a heavy refactoring so it only handles the authentication and not view logic
-    this.AuthService.login(formData)
+    this.isSubmitting = true;
+
+    this.AuthService.login(formData).then(res => {
+      this.isSubmitting = false;
+    })
   }
 }
 

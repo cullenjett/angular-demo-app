@@ -16,6 +16,11 @@ a:visited {
   text-decoration: none;
 }
 
+.no-hover:hover {
+  color: inherit !important;
+  cursor: auto !important;
+}
+
 .spinner {
   display: block;
   width: 5rem;
