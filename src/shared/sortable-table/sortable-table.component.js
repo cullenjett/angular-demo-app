@@ -22,13 +22,21 @@ class SortableTableCtrl {
 
     this.rows = data.map(obj => {
       let row = {};
-      this.fieldList.forEach(fieldName => {
-        let value = this.parseFieldType(obj[fieldName]);
-        row[fieldName] = value;
+      this.fieldList.forEach(field => {
+        let value;
+        if (typeof field === 'string') {
+          value = this.parseFieldType(obj[field]);
+          row[field] = value;
+        } else if (typeof field === 'object') {
+          let configFieldName = Object.keys(field)[0];
+          value = this.parseFieldType(obj[configFieldName]);
+          row[configFieldName] = value;
+        }
       });
       return row;
     });
 
+    console.log(this.rows)
     this.sortOn = Object.keys(this.columns)[0];
   }
 
