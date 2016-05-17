@@ -1,1 +1,19 @@
-<h1>Request-y things go here...</h1>
+<section class="row">
+  <div class="col-sm-6">
+
+    <ul class="filter-list">
+      <li class="filter-list__item"
+        ng-repeat="filter in $ctrl.filters"
+        ng-class="{active: $ctrl.activeFilter === filter}"
+        ng-click="$ctrl.filter(filter)">{{ filter }}</li>
+    </ul>
+
+    <sortable-table
+      data="$ctrl.myRequests"
+      field-list="['type', 'description', 'priority', 'status', 'dateCreated']"
+      is-loading="$ctrl.isLoading"
+      character-limit="35">
+    </sortable-table>
+
+  </div>
+</section>

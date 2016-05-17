@@ -41,7 +41,7 @@ class SortableTableCtrl {
     });
 
     this.columnCount = Object.keys(this.columns).length
-    this.sortOn = Object.keys(this.columns)[0];
+    this.sortOn = (this.sortOn === "") ? Object.keys(this.columns)[0] : this.sortOn;
   }
 
   camelCaseToText(word) {
