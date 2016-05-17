@@ -53,6 +53,10 @@ module.exports = {
         relatedUserUsername: 19,
         relatedClient: 20,
         relatedClientName: 21,
+        quickstart: {
+          viewKey: 23,
+          modifyKey: 24
+        }
       }
     }
   }
