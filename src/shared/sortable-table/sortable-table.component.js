@@ -3,7 +3,7 @@ class SortableTableCtrl {
     this.columns = {};
     this.sortOn = '';
     this.sortReverse = false;
-    this.characterLimit = this.characterLimit || 60;
+    this.characterLimit = parseInt(this.characterLimit) || 60;
 
     $scope.$watch('$ctrl.data', (newVal, oldVal) => {
       this.calculateLayout(newVal);
@@ -23,21 +23,24 @@ class SortableTableCtrl {
 
     this.rows = data.map(obj => {
       let row = {};
+      let value;
+      let configFieldName;
+
       this.fieldList.forEach(field => {
-        let value;
         if (typeof field === 'string') {
           value = this.parseFieldType(obj[field]);
           row[field] = value;
         } else if (typeof field === 'object') {
-          let configFieldName = Object.keys(field)[0];
+          configFieldName = Object.keys(field)[0];
           value = this.parseFieldType(obj[configFieldName]);
           row[configFieldName] = value;
         }
       });
+
       return row;
     });
 
-    console.log(this.rows)
+    this.columnCount = Object.keys(this.columns).length
     this.sortOn = Object.keys(this.columns)[0];
   }
 
@@ -91,7 +94,8 @@ export default {
     data: '=',
     fieldList: '=',
     isLoading: '=',
-    characterLimit: '@'
+    characterLimit: '@',
+    rowLimit: '@'
   },
   templateUrl: 'shared/sortable-table/sortable-table.component.html',
   controller: SortableTableCtrl
