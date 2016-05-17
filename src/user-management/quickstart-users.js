@@ -31,13 +31,11 @@ quickstart_users.run(function ($rootScope, $state, Flash, AUTH_EVENTS, AuthServi
 
   $rootScope.$on(AUTH_EVENTS.loginSuccess, function(){
     $rootScope.currentUser = AuthService.currentUser();
-    $rootScope.isLoggedIn = true;
     $state.go('app.dashboard');
   });
 
   $rootScope.$on(AUTH_EVENTS.logoutSuccess, function(){
     $rootScope.currentUser = null;
-    $rootScope.isLoggedIn = false;
     $state.go('app.login');
   });
 })

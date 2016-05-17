@@ -1,6 +1,6 @@
 <div class="header container-fluid">
   <div class="row header__row text-right">
-    <div class="col-sm-12" ng-if="$root.isLoggedIn">
+    <div class="col-sm-12" ng-if="$root.currentUser">
       <span class="header__link no-hover">Advantage Integrated Solutions</span>
       <a ui-sref="app.profile" ui-sref-active="active" class="header__link">
         <i class="header__icon fa fa-user"></i>
@@ -8,7 +8,7 @@
       </a>
     </div>
 
-    <div class="col-sm-12" ng-if="!$root.isLoggedIn">
+    <div class="col-sm-12" ng-if="!$root.currentUser">
       <a ui-sref="app.contact" ui-sref-active="active" class="header__link">
         <i class="header__icon fa fa-comments "></i>
         Contact
@@ -28,12 +28,12 @@
   </div>
 
   <div class="row header__row">
-    <div class="col-sm-12" ng-if="$root.isLoggedIn">
+    <div class="col-sm-12" ng-if="$root.currentUser">
       <a ui-sref="app.dashboard" ui-sref-active="active" class="header__link">Dashboard</a>
       <a ui-sref="app.requests" ui-sref-active="active" class="header__link">Requests</a>
     </div>
 
-    <div class="col-sm-12" ng-if="!$root.isLoggedIn">
+    <div class="col-sm-12" ng-if="!$root.currentUser">
       <a ui-sref="app.login" ui-sref-active="active" class="header__link">Sign In</a>
       <a ui-sref="app.register" ui-sref-active="active" class="header__link">Register</a>
     </div>
