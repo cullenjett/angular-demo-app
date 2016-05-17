@@ -37,8 +37,8 @@ body {
   margin: 0 1.5rem;
   transition: color .1s;
 }
-.header__link:first-child { margin-left: 0; }
-.header__link:last-child { margin-right: 0; }
+.header__link:first-child { padding-left: 0; margin-left: 0; }
+.header__link:last-child { padding-right: 0; margin-right: 0; }
 
 .header__link:not(.no-hover):hover {
   cursor: pointer;
@@ -60,8 +60,12 @@ body {
   vertical-align: middle;
   padding-right: 1rem;
   margin-right: .5rem;
-  border-right: 1px solid;
+  border-right: 1px solid $light-grey;
   bottom: .35rem;
+  transition: border-color .1s;
+}
+.header__img-wrapper:hover {
+  border-color: $white;
 }
 
 .header__breadcrumbs {

@@ -23,6 +23,7 @@ quickstart_users.run(function ($rootScope, $state, Flash, AUTH_EVENTS, AuthServi
     $rootScope.currentUser = AuthService.currentUser();
 
     if(!next.public && !AuthService.isLoggedIn()){
+      Flash.error('Please sign in first.');
       $state.go('app.login');
       event.preventDefault();
     };
