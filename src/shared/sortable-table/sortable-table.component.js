@@ -83,6 +83,6 @@ export default {
     fieldList: '=',
     isLoading: '='
   },
-  templateUrl: 'shared/sortable-table/sortable-table.tmpl.html',
+  templateUrl: 'shared/sortable-table/sortable-table.component.html',
   controller: SortableTableCtrl
 }

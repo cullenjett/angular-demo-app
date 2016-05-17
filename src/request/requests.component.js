@@ -6,6 +6,6 @@ class RequestsCtrl {
 
 export default {
   bindings: {},
-  templateUrl: 'request/requests.tmpl.html',
+  templateUrl: 'request/requests.component.html',
   controller: RequestsCtrl
 }

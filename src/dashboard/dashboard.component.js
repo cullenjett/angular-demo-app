@@ -15,6 +15,6 @@ class DashboardCtrl {
 
 export default {
   bindings: {},
-  templateUrl: "dashboard/dashboard.tmpl.html",
+  templateUrl: "dashboard/dashboard.component.html",
   controller: DashboardCtrl
 }

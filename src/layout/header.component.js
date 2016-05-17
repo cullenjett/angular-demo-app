@@ -6,6 +6,6 @@ class HeaderCtrl {
 
 export default {
   bindings: {},
-  templateUrl: 'layout/header.tmpl.html',
+  templateUrl: 'layout/header.component.html',
   controller: HeaderCtrl
 }

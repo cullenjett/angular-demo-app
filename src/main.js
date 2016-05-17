@@ -22,7 +22,7 @@ angular
     $stateProvider
       .state('app', {
         abstract: true,
-        templateUrl: 'layout/app-layout.tmpl.html'
+        templateUrl: 'layout/app-layout.html'
       })
 
     $urlRouterProvider.otherwise('/');

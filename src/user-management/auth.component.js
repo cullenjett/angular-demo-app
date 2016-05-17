@@ -17,6 +17,6 @@ export default {
   bindings: {
     authType: '@type'
   },
-  templateUrl: 'user-management/auth.tmpl.html',
+  templateUrl: 'user-management/auth.component.html',
   controller: AuthCtrl
 }
