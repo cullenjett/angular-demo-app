@@ -8,11 +8,7 @@ export default class RequestService {
     let dfd = this.$q.defer();
 
     this.quickbase.requests.doQuery(query, {}, (res) => {
-      if (res.error) {
-        dfd.reject(res.error)
-      } else {
-        dfd.resolve(res);
-      }
+      dfd.resolve(res);
     })
 
     return dfd.promise;

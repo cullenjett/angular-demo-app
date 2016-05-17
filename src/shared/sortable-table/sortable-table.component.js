@@ -5,15 +5,19 @@ class SortableTableCtrl {
     this.sortReverse = false;
 
     $scope.$watch('$ctrl.data', (newVal, oldVal) => {
-      if (newVal) {
-        this.calculateLayout(newVal);
-      }
+      this.calculateLayout(newVal);
     });
   }
 
   calculateLayout(data) {
-    this.fieldList.forEach(fieldName => {
-      this.columns[fieldName] = this.camelCaseToText(fieldName)
+    this.fieldList.forEach(field => {
+      if (typeof field === 'string') {
+        this.columns[field] = this.camelCaseToText(field)
+      } else if (typeof field === 'object') {
+        let configFieldName = Object.keys(field)[0];
+        let userEnteredFieldName = field[configFieldName];
+        this.columns[configFieldName] = userEnteredFieldName;
+      }
     });
 
     this.rows = data.map(obj => {
@@ -79,6 +83,6 @@ export default {
     fieldList: '=',
     isLoading: '='
   },
-  templateUrl: 'shared/sortable-table.tmpl.html',
+  templateUrl: 'shared/sortable-table/sortable-table.tmpl.html',
   controller: SortableTableCtrl
 }

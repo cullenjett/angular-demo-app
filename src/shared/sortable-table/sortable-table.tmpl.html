@@ -7,8 +7,10 @@
         class="sortable-table__th"
         ng-repeat="(fieldName, column) in $ctrl.columns"
         ng-click="$ctrl.sortTable(fieldName)">
-        {{ column }}
-        <i ng-class="$ctrl.getSortClass(fieldName)"></i>
+        <span class="sortable-table__th-wrapper">
+          {{ column }}
+          <i class="sortable-table__th-icon" ng-class="$ctrl.getSortClass(fieldName)"></i>
+        </span>
       </th>
     </tr>
   </thead>

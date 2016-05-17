@@ -3,7 +3,7 @@
     <h1>Recent Requests</h1>
     <sortable-table
       data="$ctrl.recentRequests"
-      field-list="['relatedUserName', 'type', 'description', 'priority', 'status']"
+      field-list="[{relatedUserName: 'Requestor'}, 'type', 'description', 'priority', 'status']"
       is-loading="$ctrl.isLoading">
     </sortable-table>
   </div>

@@ -1,5 +1,5 @@
 import quickbase from './quickbase-client';
-import SortableTableComponent from './sortable-table.component'
+import SortableTableComponent from './sortable-table/sortable-table.component'
 import UserService from './user.service';
 
 angular

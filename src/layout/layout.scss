@@ -35,17 +35,18 @@ body {
   text-transform: uppercase;
   padding: .5rem 1rem;
   margin: 0 1.5rem;
-  cursor: pointer;
   transition: color .1s;
 }
 .header__link:first-child { margin-left: 0; }
 .header__link:last-child { margin-right: 0; }
 
-.header__link:hover {
+.header__link:not(.no-hover):hover {
+  cursor: pointer;
   color: $white;
 }
 
-.header__link.active {
+.header__link.active,
+.header__link.active:hover {
   color: $brand-info;
 }
 

@@ -1,0 +1,17 @@
+.sortable-table {
+
+}
+
+.sortable-table__th {
+  cursor: pointer;
+}
+
+.sortable-table__th-wrapper {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.sortable-table__th-icon {
+  position: absolute;
+  right: 0;
+}
