@@ -1,7 +1,4 @@
-$dark-grey: #404040;
-$light-grey: #999;
-$white: #f9f9f9;
-$brand-info: #5bc0de;
+@import '../styles/variables';
 
 html,
 body {
@@ -47,7 +44,7 @@ body {
 
 .header__link.active,
 .header__link.active:hover {
-  color: $brand-info;
+  color: $primary-color;
 }
 
 .header__icon {

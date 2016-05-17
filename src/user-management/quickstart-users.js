@@ -56,18 +56,18 @@ quickstart_users.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('app.forgotPassword', {
       url: '/forgot-password',
-      templateUrl: 'user-management/forgot-password.tmpl.html',
+      templateUrl: 'user-management/forgot-password.html',
       public: true,
       title: 'Forgot Password'
     })
     .state('app.profile', {
       url: '/profile',
-      templateUrl: 'user-management/profile.tmpl.html',
+      templateUrl: 'user-management/profile.html',
       title: 'Profile'
     })
     .state('app.changePassword', {
       url: '/change-password',
-      templateUrl: 'user-management/change-password.tmpl.html',
+      templateUrl: 'user-management/change-password.html',
       title: 'Change Password'
     })
 })
