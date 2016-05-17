@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="row in $ctrl.rows | orderBy:$ctrl.sortOn:$ctrl.sortReverse">
-      <td ng-repeat="value in row">{{ value }}</td>
+      <td ng-repeat="value in row">{{ value | limitTo:$ctrl.characterLimit }}{{ value.length > $ctrl.characterLimit ? "..." : "" }}</td>
     </tr>
   </tbody>
 </table>

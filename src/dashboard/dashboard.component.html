@@ -4,7 +4,8 @@
     <sortable-table
       data="$ctrl.recentRequests"
       field-list="[{relatedUserName: 'Requestor'}, 'type', 'description', 'priority', 'status']"
-      is-loading="$ctrl.isLoading">
+      is-loading="$ctrl.isLoading"
+      character-limit="60">
     </sortable-table>
   </div>
 </div>

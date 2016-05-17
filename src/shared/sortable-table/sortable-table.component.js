@@ -3,6 +3,7 @@ class SortableTableCtrl {
     this.columns = {};
     this.sortOn = '';
     this.sortReverse = false;
+    this.characterLimit = this.characterLimit || 60;
 
     $scope.$watch('$ctrl.data', (newVal, oldVal) => {
       this.calculateLayout(newVal);
@@ -89,7 +90,8 @@ export default {
   bindings: {
     data: '=',
     fieldList: '=',
-    isLoading: '='
+    isLoading: '=',
+    characterLimit: '@'
   },
   templateUrl: 'shared/sortable-table/sortable-table.component.html',
   controller: SortableTableCtrl
