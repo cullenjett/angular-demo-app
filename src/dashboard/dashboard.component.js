@@ -5,11 +5,11 @@ class DashboardCtrl {
 
     UserService.currentUser().then(user => {
       this.currentUser = user;
-      return RequestService.where({ relatedClient: user.relatedClient })
+      return RequestService.findForUser(user.id)
     }).then(requests => {
       this.isLoading = false;
       this.recentRequests = requests;
-    })
+    });
   }
 }
 

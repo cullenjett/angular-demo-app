@@ -1,17 +1,18 @@
 class RequestsCtrl {
-  constructor(RequestService, AuthService) {
-    this.myRequests = [];
+  constructor(UserService, RequestService, AuthService) {
+    this.activeRequests = [];
     this.isLoading = true;
     this.filters = ['All', 'Open', 'In Progress', 'Closed'];
     this.activeFilter = 'All';
 
-    RequestService.where({
-      relatedUserUsername: AuthService.currentUser().username
+    UserService.currentUser().then(user => {
+      this.currentUser = user;
+      return RequestService.all()
     }).then(requests => {
-      this.requests = requests;
-      this.myRequests = requests;
+      this.allRequests = requests;
+      this.activeRequests = requests;
       this.isLoading = false;
-    })
+    });
   }
 
   filter(status) {
@@ -20,9 +21,9 @@ class RequestsCtrl {
     }
 
     if (status == 'All') {
-      this.myRequests = this.requests;
+      this.activeRequests = this.allRequests;
     } else {
-      this.myRequests = this.requests.filter(request => {
+      this.activeRequests = this.allRequests.filter(request => {
         return request.status == status
       });
     }

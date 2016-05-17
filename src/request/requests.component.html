@@ -1,5 +1,5 @@
 <section class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-12">
 
     <ul class="filter-list">
       <li class="filter-list__item"
@@ -9,8 +9,8 @@
     </ul>
 
     <sortable-table
-      data="$ctrl.myRequests"
-      field-list="['type', 'description', 'priority', 'status', 'dateCreated']"
+      data="$ctrl.activeRequests"
+      field-list="[{relatedUserName: 'Requestor'}, 'type', 'description', 'priority', 'status', 'dateCreated']"
       is-loading="$ctrl.isLoading"
       character-limit="35">
     </sortable-table>
