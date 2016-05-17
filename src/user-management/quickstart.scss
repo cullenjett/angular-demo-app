@@ -10,22 +10,22 @@ $brand-warning: #f0ad4e;
 $brand-danger:  #d9534f;
 
 #alert-flyover{
-	position: fixed;
-	width: 300px;
+	font-size: 1.4rem;
+	font-weight: 200;
 	color: white;
-	padding: 10px;
+	padding: 1rem;
+	position: fixed;
+	right: 0;
+	bottom: 1rem;
+	width: 30rem;
 	border-radius: 4px 0px 0px 4px;
-	font-size:16px;
-	right: -600px;
-	bottom: 0px;
-	overflow: hidden;
-	opacity: 0.9;
+	transform: translateX(300px);
 	z-index: 1050;
-	transition: right 1.2s ease-out 0s;
+	transition: transform .6s ease-out 0s;
 }
 
 #alert-flyover.in{
-	right: 0px;
+	transform: translateX(0);
 }
 
 #alert-flyover.error{
@@ -39,7 +39,7 @@ $brand-danger:  #d9534f;
 .validation-errors{
 	position: absolute;
 	left: 0px;
-	bottom: 10px;
+	bottom: 1rem;
 	width: 30rem;
   font-size: 1.4rem;
   font-weight: 200;
