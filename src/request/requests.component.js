@@ -2,7 +2,7 @@ class RequestsCtrl {
   constructor(UserService, RequestService, AuthService) {
     this.activeRequests = [];
     this.isLoading = true;
-    this.filters = ['All', 'Open', 'In Progress', 'Closed'];
+    this.filters = ['All', 'Open', 'In Progress', 'Complete'];
     this.activeFilter = 'All';
 
     UserService.currentUser().then(user => {
