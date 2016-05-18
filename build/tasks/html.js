@@ -3,6 +3,7 @@ var insert = require('gulp-insert');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var templateCache = require('gulp-angular-templatecache');
+var htmlmin = require('gulp-htmlmin');
 
 var paths = require('../paths');
 var app = require(paths.app);
@@ -28,6 +29,7 @@ gulp.task('html-prod', ['js-prod', 'css-prod'], function() {
 
 gulp.task('templates', function() {
   return gulp.src(paths.templates)
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(templateCache("templates.js", {
       module: "templates",
       standalone: true
