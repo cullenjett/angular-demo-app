@@ -1,7 +1,7 @@
 class SortableTableCtrl {
   constructor($scope) {
     this.columns = {};
-    this.sortOn = '';
+    this.sortOn = null;
     this.sortReverse = false;
     this.characterLimit = parseInt(this.characterLimit) || 60;
 
@@ -40,8 +40,7 @@ class SortableTableCtrl {
       return row;
     });
 
-    this.columnCount = Object.keys(this.columns).length
-    this.sortOn = (this.sortOn === "") ? Object.keys(this.columns)[0] : this.sortOn;
+    this.columnCount = Object.keys(this.columns).length;
   }
 
   camelCaseToText(word) {

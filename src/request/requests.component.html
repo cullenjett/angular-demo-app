@@ -1,6 +1,5 @@
 <section class="row">
   <div class="col-sm-12">
-
     <ul class="filter-list">
       <li class="filter-list__item"
         ng-repeat="filter in $ctrl.filters"
@@ -12,13 +11,14 @@
       New Request&nbsp;
       <i class="fa fa-angle-down"></i>
     </a>
+  </div>
 
+  <div class="col-sm-12">
     <sortable-table
       data="$ctrl.activeRequests"
       field-list="[{relatedUserName: 'Requestor'}, 'type', 'description', 'priority', 'status', 'dateCreated']"
       is-loading="$ctrl.isLoading"
       character-limit="100">
     </sortable-table>
-
   </div>
 </section>

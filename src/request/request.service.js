@@ -17,7 +17,7 @@ export default class RequestService {
       this.UserService.currentUser().then(user => {
         this.quickbase.requests.doQuery({
           relatedClient: user.relatedClient
-        }, {}, (res) => {
+        }, {slist: 'dateCreated', options: 'sortorder-D'}, (res) => {
           if (res.error) {
             this.Flash.error(res.error.message);
           }
@@ -38,7 +38,7 @@ export default class RequestService {
       let matchingRequest = this.allRequests.filter(req => { return req.id == id })[0];
       dfd.resolve(matchingRequest);
     } else {
-      this.quickbase.requests.doQuery({ id }, {}, (res) => {
+      this.quickbase.requests.doQuery({ id }, {slist: 'dateCreated', options: 'sortorder-D'}, (res) => {
         if (res.error) {
           this.Flash.error(res.error.message);
         }
