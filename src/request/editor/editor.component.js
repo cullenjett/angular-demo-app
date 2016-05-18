@@ -1,10 +1,9 @@
 class EditorCtrl {
-  constructor($state, $stateParams, RequestService) {
+  constructor($scope, $state, $stateParams, RequestService) {
+    this.$scope = $scope;
     this.$state = $state;
     this.RequestService = RequestService;
     this.isSubmitting = true;
-
-    console.log($stateParams)
 
     if ($stateParams.id) {
       RequestService.find($stateParams.id).then(request => {
@@ -27,6 +26,20 @@ class EditorCtrl {
     this.RequestService.save(this.request).then(() => {
       this.$state.go('app.requests');
     });
+  }
+
+  handleFileRead(file) {
+    if (!this.request.attachments) {
+      this.request.attachments = [];
+    }
+
+    this.$scope.$apply(() => {
+      this.request.attachments.push({ file })
+    });
+  }
+
+  removeAttachment(index) {
+    this.request.attachments.splice(index, 1);
   }
 }
 

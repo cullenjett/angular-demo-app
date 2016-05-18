@@ -1,17 +1,48 @@
+@import 'variables';
+
 .form-control {
   font-size: 16px;
   padding: .8rem 1.4rem;
-  border: 2px solid #ccc;
+  border: 2px solid $light-grey;
   border-radius: 2px;
   box-shadow: none;
   height: initial;
 }
 .form-control:focus {
-  box-shadow: 0 1px 5px #ccc;
+  box-shadow: 0 1px 5px $light-grey;
 }
 
 .btn {
   font-size: 1.6rem;
   padding: .8rem 2rem;
   border-radius: 2px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list__item {
+  padding: .6rem 4rem .6rem 1rem;
+  border: 2px solid $light-grey;
+  border-bottom: none;
+  border-radius: 2px;
+  position: relative;
+}
+.list__item:last-child {
+  border-bottom: 2px solid $light-grey
+}
+
+.list__item__delete {
+  position: absolute;
+  right: .5rem;
+  top: .5rem;
+  padding: .5rem;
+  color: lighten($brand-danger, 15);
+}
+.list__item__delete:hover {
+  color: $brand-danger;
+  cursor: pointer;
 }

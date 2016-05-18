@@ -1,0 +1,97 @@
+@import '../../styles/variables';
+
+/* DRAG AND DROP COMPONENT
+--------------------------------------------*/
+.drag-and-drop {
+  font-size: 1em;
+  color: $dark-grey;
+  background: #f6f8fa;
+  min-height: 8em;
+  outline: 2px dashed $light-grey;
+  outline-offset: -.8em;
+  padding: 1.5em;
+  margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  transition: all .2s;
+}
+
+.drag-and-drop--drag-hover {
+  color: $primary-color;
+  background: $white;
+  outline-color: $primary-color;
+}
+
+.drag-and-drop__reading {
+  display: none;
+}
+
+.drag-and-drop--is-reading {
+  color: $primary-color;
+  background: $white;
+  outline-color: $primary-color;
+}
+
+.drag-and-drop--is-reading .drag-and-drop__reading {
+  display: block;
+}
+
+.drag-and-drop--is-reading .drag-and-drop__inputs {
+  display: none;
+}
+
+.drag-and-drop__inputs {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.drag-and-drop__icon {
+  fill: $dark-grey;
+  width: 100%;
+  height: 2.2em;
+  display: block;
+  margin-bottom: 1.2em;
+  transition: all .2s;
+}
+
+.drag-and-drop__file {
+  position: relative;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  z-index: -1;
+}
+
+.drag-and-drop__label {
+  font-weight: 400;
+  margin: 0;
+}
+
+.drag-and-drop__label:hover {
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.drag-and-drop--drag-hover .drag-and-drop__icon {
+  fill: $primary-color;
+}

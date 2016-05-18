@@ -1,7 +1,8 @@
 export default class RequestService {
-  constructor($q, quickbase, Flash, UserService) {
+  constructor($q, quickbase, AttachmentService, Flash, UserService) {
     this.$q = $q;
     this.quickbase = quickbase;
+    this.AttachmentService = AttachmentService;
     this.Flash = Flash;
     this.UserService = UserService;
 
@@ -92,20 +93,25 @@ export default class RequestService {
             this.Flash.error(res.error.message);
           }
 
+          let newId = res;
+          let d = new Date();
+
+          request.id = newId;
+          request.relatedUserName = user.name;
+          request.dateCreated = d.getTime();
+
           if (this.allRequests) {
-            let newId = res;
-            let d = new Date();
-
-            request.id = newId;
-            request.relatedUserName = user.name;
-            request.dateCreated = d.getTime();
-
             this.allRequests.unshift(request);
+          }
 
-            dfd.resolve(true);
+          if (request.attachments && request.attachments.length) {
+            this.AttachmentService.add(request.attachments, request.id).then(() => {
+              dfd.resolve(true);
+            });
           } else {
             dfd.resolve(true);
           }
+
         });
       });
     }

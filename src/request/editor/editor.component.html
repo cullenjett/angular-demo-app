@@ -5,7 +5,7 @@
       <fieldset ng-disabled="$ctrl.isSubmitting">
 
         <!-- TODO: Create a component for a custom-styled select box -->
-        <fieldset class="form-group">
+        <fieldset class="form-group col-xs-12">
           <label for="type" class="control-label">Request Type</label>
           <select
             name="type"
@@ -19,12 +19,12 @@
           </select>
         </fieldset>
 
-        <fieldset class="form-group">
+        <fieldset class="form-group col-xs-12">
           <label for="priority" class="control-label">Priority</label>
           <input type="text" class="form-control" ng-model="$ctrl.request.priority" required>
         </fieldset>
 
-        <fieldset class="form-group">
+        <fieldset class="form-group col-xs-12">
           <label for="description" class="control-label">Description</label>
           <textarea
             rows="4"
@@ -34,7 +34,22 @@
             required></textarea>
         </fieldset>
 
-        <fieldset class="form-group">
+        <fieldset class="form-group col-sm-7">
+          <label for="attachments" class="control-label">File Attachments</label>
+          <file-uploader on-file-read="$ctrl.handleFileRead(file)"></file-uploader>
+        </fieldset>
+
+        <fieldset class="form-group col-sm-5">
+          <label>Attached Files:</label>
+          <ul class="list">
+            <li class="list__item" ng-repeat="attachment in $ctrl.request.attachments">
+              {{ attachment.file.filename }}
+              <i class="list__item__delete fa fa-close" ng-click="$ctrl.removeAttachment($index)"></i>
+            </li>
+          </ul>
+        </fieldset>
+
+        <fieldset class="form-group col-xs-12">
           <button type="submit" class="btn btn-info btn-block" ng-disabled="requestForm.$invalid">Submit</button>
         </fieldset>
 

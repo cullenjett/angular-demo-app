@@ -30,6 +30,17 @@ module.exports = {
           lastLoggedIn: 11
         }
       },
+      attachments: {
+        dbid: 'bkuvskycj',
+        id: 3,
+        file: 6,
+        description: 7,
+        relatedRequest: 8,
+        quickstart: {
+          viewKey: 11,
+          modifyKey: 12
+        }
+      },
       clients: {
         dbid: "bkuvskxud",
         id: 3,
