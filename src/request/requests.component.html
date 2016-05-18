@@ -8,6 +8,11 @@
         ng-click="$ctrl.filter(filter)">{{ filter }}</li>
     </ul>
 
+    <a ui-sref="app.requestEditor" class="btn btn-info pull-right">
+      New Request&nbsp;
+      <i class="fa fa-angle-down"></i>
+    </a>
+
     <sortable-table
       data="$ctrl.activeRequests"
       field-list="[{relatedUserName: 'Requestor'}, 'type', 'description', 'priority', 'status', 'dateCreated']"
