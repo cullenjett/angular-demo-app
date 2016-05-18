@@ -44,7 +44,7 @@
           <ul class="list">
             <li class="list__item" ng-repeat="attachment in $ctrl.request.attachments">
               {{ attachment.file.filename }}
-              <i class="list__item__delete fa fa-close" ng-click="$ctrl.removeAttachment($index)"></i>
+              <i class="list__item__delete fa fa-close" ng-click="$ctrl.removeAttachment(attachment, $index)"></i>
             </li>
           </ul>
         </fieldset>

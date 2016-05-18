@@ -1,14 +1,22 @@
 class EditorCtrl {
-  constructor($scope, $state, $stateParams, RequestService) {
+  constructor($scope, $state, $stateParams, AttachmentService, RequestService) {
     this.$scope = $scope;
     this.$state = $state;
     this.RequestService = RequestService;
+    this.AttachmentService = AttachmentService;
+
     this.isSubmitting = true;
 
     if ($stateParams.id) {
       RequestService.find($stateParams.id).then(request => {
-        this.request = request;
-        this.isSubmitting = false;
+        AttachmentService.where({relatedRequest: $stateParams.id}).then(attachments => {
+          this.request = request;
+          this.request.attachments = attachments.map(attachment => {
+            attachment.file.filename = attachment.file.filename.replace(/%20/g, " ");
+            return attachment;
+          });
+          this.isSubmitting = false;
+        })
       });
     } else {
       this.request = this.request || {
@@ -38,7 +46,13 @@ class EditorCtrl {
     });
   }
 
-  removeAttachment(index) {
+  removeAttachment(attachment, index) {
+    let isExistingAttachment = attachment.id
+
+    if (isExistingAttachment) {
+      this.AttachmentService.delete(attachment.id);
+    }
+
     this.request.attachments.splice(index, 1);
   }
 }

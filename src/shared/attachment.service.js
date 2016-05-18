@@ -26,4 +26,26 @@ export default class AttachmentService {
 
     return this.$q.when(requests);
   }
+
+  delete(id) {
+    this.quickbase.attachments.purgeRecords({ id }, (res) => {
+      if (res.error) {
+        this.Flash.error(res.error.message);
+      }
+    })
+  }
+
+  where(query) {
+    let dfd = this.$q.defer();
+
+    this.quickbase.attachments.doQuery(query, {}, (res) => {
+      if (res.errror) {
+        this.Flash.error(res.error.message);
+      }
+
+      dfd.resolve(res)
+    })
+
+    return dfd.promise;
+  }
 }
