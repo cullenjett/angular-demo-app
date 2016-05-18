@@ -15,8 +15,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="row in $ctrl.rows | orderBy:$ctrl.sortOn:$ctrl.sortReverse">
-      <td ng-repeat="value in row">
+    <tr ng-repeat="row in $ctrl.rows | orderBy:$ctrl.sortOn:$ctrl.sortReverse" ng-click="$ctrl.onClickRow({id: row.id})">
+      <td ng-repeat="value in row.data" class="sortable-table__td">
         {{ value | limitTo:$ctrl.characterLimit }}{{ value.length > $ctrl.characterLimit ? "..." : "" }}
       </td>
     </tr>

@@ -22,18 +22,21 @@ class SortableTableCtrl {
     });
 
     this.rows = data.map(obj => {
-      let row = {};
+      let row = {
+        id: obj.id,
+        data: {}
+      };
       let value;
       let configFieldName;
 
       this.fieldList.forEach(field => {
         if (typeof field === 'string') {
           value = this.parseFieldType(obj[field]);
-          row[field] = value;
+          row.data[field] = value;
         } else if (typeof field === 'object') {
           configFieldName = Object.keys(field)[0];
           value = this.parseFieldType(obj[configFieldName]);
-          row[configFieldName] = value;
+          row.data[configFieldName] = value;
         }
       });
 
@@ -94,7 +97,8 @@ export default {
     fieldList: '=',
     isLoading: '=',
     characterLimit: '@',
-    rowLimit: '@'
+    rowLimit: '@',
+    onClickRow: "&"
   },
   templateUrl: 'shared/sortable-table/sortable-table.component.html',
   controller: SortableTableCtrl

@@ -18,7 +18,8 @@
       data="$ctrl.activeRequests"
       field-list="[{relatedUserName: 'Requestor'}, 'type', 'description', 'priority', 'status', 'dateCreated']"
       is-loading="$ctrl.isLoading"
-      character-limit="100">
+      character-limit="100"
+      on-click-row="$ctrl.onClickRow(id)">
     </sortable-table>
   </div>
 </section>
