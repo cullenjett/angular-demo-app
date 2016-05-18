@@ -30,9 +30,7 @@ function interceptErrors(error) {
 
 gulp.task('watch', ['local']);
 
-gulp.task('local', function() {
-  gulp.start(['html-dev', 'templates', 'css-dev', 'js-dev']);
-
+gulp.task('local', ['html-dev', 'templates', 'css-dev', 'js-dev'], function() {
   browserSync.init({
     open: true,
     notify: false,
