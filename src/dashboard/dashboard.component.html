@@ -4,13 +4,20 @@
     <sortable-table
       data="$ctrl.recentRequests"
       field-list="['type', 'description', 'priority', 'status']"
-      is-loading="$ctrl.isLoading"
+      is-loading="$ctrl.loadingRequests"
       character-limit="60"
       on-click-row="$ctrl.onClickRow(id)">
     </sortable-table>
   </div>
 
   <div class="col-sm-4">
-    <h2>Comments</h2>
+    <h2>My Recent Comments</h2>
+    <sortable-table
+      data="$ctrl.recentComments"
+      field-list="[{ body: 'Comment'}]"
+      is-loading="$ctrl.loadingComments"
+      character-limit="40"
+      on-click-row="$ctrl.onClickRow(id)">
+    </sortable-table>
   </div>
 </section>

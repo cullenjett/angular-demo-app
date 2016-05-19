@@ -12,7 +12,8 @@
               name="type"
               id="type"
               class="form-control"
-              ng-model="$ctrl.request.type" required>
+              ng-model="$ctrl.request.type"
+              required>
               <option value="New Feature">New Feature</option>
               <option value="Bug Fix">Bug Fix</option>
               <option value="Change/Update">Change/Update</option>
@@ -58,6 +59,10 @@
 
       </fieldset>
     </form>
+
+    <div class="col-xs-12">
+      <comments data="$ctrl.comments" request-id="$ctrl.request.id"></comments>
+    </div>
 
   </div>
 </section>

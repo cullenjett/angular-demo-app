@@ -1,5 +1,5 @@
 class EditorCtrl {
-  constructor($scope, $state, $stateParams, AttachmentService, RequestService) {
+  constructor($scope, $state, $stateParams, AttachmentService, CommentService, RequestService) {
     this.$scope = $scope;
     this.$state = $state;
     this.RequestService = RequestService;
@@ -16,7 +16,11 @@ class EditorCtrl {
             return attachment;
           });
           this.isSubmitting = false;
-        })
+        });
+
+        CommentService.where({relatedRequest: $stateParams.id}).then(comments => {
+          this.comments = comments;
+        });
       });
     } else {
       this.request = this.request || {

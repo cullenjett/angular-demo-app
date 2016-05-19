@@ -1,0 +1,15 @@
+<section class="comments">
+  <form ng-submit="$ctrl.submit()">
+    <fieldset>
+
+      <fieldset class="form-group">
+        <input type="text" class="form-control" placeholder="Add a comment" ng-model="$ctrl.newComment.body">
+      </fieldset>
+
+    </fieldset>
+  </form>
+
+  <ul class="comments-list">
+    <li class="comments-list__item" ng-repeat="comment in $ctrl.comments">{{ comment.body }}</li>
+  </ul>
+</section>
