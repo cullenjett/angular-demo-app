@@ -17,7 +17,11 @@ export default class CommentService {
           this.Flash.error(res.error.message);
         }
 
+        let d = new Date();
+
         comment.id = res;
+        comment.relatedUserName = user.name;
+        comment.dateCreated = d.getTime();
         dfd.resolve(comment);
       });
     });

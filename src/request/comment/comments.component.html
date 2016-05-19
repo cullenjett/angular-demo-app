@@ -1,15 +1,24 @@
 <section class="comments">
   <form ng-submit="$ctrl.submit()">
     <fieldset>
-
-      <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Add a comment" ng-model="$ctrl.newComment.body">
-      </fieldset>
-
+      <input type="text" class="form-control" placeholder="Add a comment" ng-model="$ctrl.newComment.body">
     </fieldset>
   </form>
 
   <ul class="comments-list">
-    <li class="comments-list__item" ng-repeat="comment in $ctrl.comments">{{ comment.body }}</li>
+    <li class="comments-list__item" ng-repeat="comment in $ctrl.comments">
+      <div class="row comments-list__header">
+        <div class="col-sm-8">
+          <i class="fa fa-commenting-o fa-flip-horizontal comments-list__icon"></i>
+          <span class="comments-list__name">{{ comment.relatedUserName }}</span>
+        </div>
+        <div class="col-sm-4 text-right comments-list__date">{{ comment.dateCreated | date:'shortDate' }}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="comments-list__body">{{ comment.body }}</p>
+        </div>
+      </div>
+    </li>
   </ul>
 </section>

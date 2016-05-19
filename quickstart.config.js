@@ -36,7 +36,6 @@ module.exports = {
         file: 6,
         description: 7,
         relatedRequest: 8,
-        relatedUser: 15,
         quickstart: {
           viewKey: 11,
           modifyKey: 12
@@ -57,6 +56,9 @@ module.exports = {
         id: 3,
         body: 6,
         relatedRequest: 7,
+        relatedUser: 15,
+        relatedUserName: 16,
+        relatedUserUsername: 17,
         quickstart: {
           viewKey: 10,
           modifyKey: 11

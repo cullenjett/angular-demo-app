@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+
+.comments-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.comments-list__item {
+  padding: 2rem 1rem;
+  border-bottom: 1px solid $light-grey;
+}
+
+.comments-list__header {
+  margin-bottom: 1.5rem;
+}
+
+.comments-list__icon {
+  margin-right: .5rem;
+  color: $light-grey;
+}
+
+.comments-list__name {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.comments-list__date {
+  color: $light-grey;
+}
+
+.comments-list__body {
+
+}
