@@ -9,19 +9,21 @@ export default class AttachmentService {
     let requests = [];
 
     files.forEach(file => {
-      let dfd = this.$q.defer();
+      if (!file.id) {
+        let dfd = this.$q.defer();
 
-      file.relatedRequest = requestId;
+        file.relatedRequest = requestId;
 
-      this.quickbase.attachments.addRecord(file, (res) => {
-        if (res.error) {
-          this.Flash.error(res.error.message);
-        }
+        this.quickbase.attachments.addRecord(file, (res) => {
+          if (res.error) {
+            this.Flash.error(res.error.message);
+          }
 
-        dfd.resolve(true);
-      });
+          dfd.resolve(true);
+        });
 
-      requests.push(dfd.promise);
+        requests.push(dfd.promise);
+      }
     });
 
     return this.$q.when(requests);

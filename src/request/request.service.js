@@ -76,12 +76,24 @@ export default class RequestService {
     let dfd = this.$q.defer();
 
     if (request.id) {
-      this.quickbase.requests.importFromCSV([request], (res) => {
+      let safeRequest = {
+        type: request.type,
+        priority: request.priority,
+        description: request.description
+      };
+
+      this.quickbase.requests.editRecord(request.id, safeRequest, (res) => {
         if (res.error) {
           this.Flash.error(res.error.message);
         }
 
-        dfd.resolve(true);
+        if (request.attachments && request.attachments.length) {
+          this.AttachmentService.add(request.attachments, request.id).then(() => {
+            dfd.resolve(true);
+          });
+        } else {
+          dfd.resolve(true);
+        }
       })
     } else {
       this.UserService.currentUser().then(user => {

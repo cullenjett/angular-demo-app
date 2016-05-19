@@ -5,7 +5,8 @@
       data="$ctrl.recentRequests"
       field-list="['type', 'description', 'priority', 'status']"
       is-loading="$ctrl.isLoading"
-      character-limit="60">
+      character-limit="60"
+      on-click-row="$ctrl.onClickRow(id)">
     </sortable-table>
   </div>
 

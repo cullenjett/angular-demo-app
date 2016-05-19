@@ -1,5 +1,7 @@
 class DashboardCtrl {
-  constructor(UserService, RequestService, Flash) {
+  constructor($state, UserService, RequestService, Flash) {
+    this.$state = $state;
+
     this.recentRequests = [];
     this.isLoading = true;
 
@@ -10,6 +12,10 @@ class DashboardCtrl {
       this.isLoading = false;
       this.recentRequests = requests;
     });
+  }
+
+  onClickRow(id) {
+    this.$state.go('app.requestEditor', { id });
   }
 }
 
