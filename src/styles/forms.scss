@@ -40,6 +40,12 @@ select::-ms-expand {
   font-size: 1.4rem;
 }
 
+.attention {
+  font-size: 1.3rem;
+  color: $light-grey;
+  margin-bottom: 0;
+}
+
 .list {
   list-style: none;
   margin: 0;

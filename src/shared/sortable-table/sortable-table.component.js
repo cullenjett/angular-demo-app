@@ -75,7 +75,7 @@ class SortableTableCtrl {
   sortTable(fieldName) {
     let prevSortOn = this.sortOn;
 
-    this.sortOn = fieldName;
+    this.sortOn = 'data.' + fieldName;
 
     if (prevSortOn === this.sortOn) {
       this.sortReverse = !this.sortReverse;
@@ -83,10 +83,11 @@ class SortableTableCtrl {
   }
 
   getSortClass(fieldName) {
-    var ascClass = "fa fa-sort-asc";
-    var descClass = "fa fa-sort-desc";
+    let augmentedFieldName = 'data.' + fieldName;
+    let ascClass = "fa fa-sort-asc";
+    let descClass = "fa fa-sort-desc";
 
-    if (fieldName !== this.sortOn) return '';
+    if (augmentedFieldName !== this.sortOn) return '';
     return this.sortReverse ? ascClass : descClass;
   }
 }
