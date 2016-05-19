@@ -7,16 +7,18 @@
         <!-- TODO: Create a component for a custom-styled select box -->
         <fieldset class="form-group col-xs-12">
           <label for="type" class="control-label">Request Type</label>
-          <select
-            name="type"
-            id="type"
-            class="form-control"
-            ng-model="$ctrl.request.type" required>
-            <option value="New Feature">New Feature</option>
-            <option value="Bug Fix">Bug Fix</option>
-            <option value="Change/Update">Change/Update</option>
-            <option value="Other">Other</option>
-          </select>
+          <div class="select-wrapper">
+            <select
+              name="type"
+              id="type"
+              class="form-control"
+              ng-model="$ctrl.request.type" required>
+              <option value="New Feature">New Feature</option>
+              <option value="Bug Fix">Bug Fix</option>
+              <option value="Change/Update">Change/Update</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </fieldset>
 
         <fieldset class="form-group col-xs-12">
@@ -42,7 +44,7 @@
         <fieldset class="form-group col-sm-5">
           <label>Attached Files:</label>
           <ul class="list">
-            <li class="list__item" ng-repeat="attachment in $ctrl.request.attachments">
+            <li class="list__item" ng-repeat="attachment in $ctrl.request.attachments" title="{{ attachment.file.filename }}">
               {{ attachment.file.filename }}
               <i class="list__item__delete fa fa-close" ng-click="$ctrl.removeAttachment(attachment, $index)"></i>
             </li>

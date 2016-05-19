@@ -87,6 +87,11 @@ export default class RequestService {
           this.Flash.error(res.error.message);
         }
 
+        // TODO: start here
+        // this.handleAttachments(request).then(() => {
+        //   dfd.resolve(true)
+        // })
+
         if (request.attachments && request.attachments.length) {
           this.AttachmentService.add(request.attachments, request.id).then(() => {
             dfd.resolve(true);
@@ -129,5 +134,9 @@ export default class RequestService {
     }
 
     return dfd.promise;
+  }
+
+  handleAttachments(requests) {
+
   }
 }
