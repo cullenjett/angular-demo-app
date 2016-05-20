@@ -9,8 +9,11 @@ class EditorCtrl {
 
     if ($stateParams.id) {
       RequestService.find($stateParams.id).then(request => {
+        this.request = request;
+        this.editMode = true;
+        this.title = `Edit Request #${request.id}`;
+
         AttachmentService.where({relatedRequest: $stateParams.id}).then(attachments => {
-          this.request = request;
           this.request.attachments = attachments.map(attachment => {
             attachment.file.filename = attachment.file.filename.replace(/%20/g, " ");
             return attachment;
@@ -23,6 +26,7 @@ class EditorCtrl {
         });
       });
     } else {
+      this.title = "New Request";
       this.request = this.request || {
         type: 'New Feature',
         priority: '',

@@ -67,6 +67,7 @@ module.exports = {
       requests: {
         dbid: "bkuvskx6m",
         dateCreated: 1,
+        dateModified: 2,
         id: 3,
         type: 6,
         description: 7,

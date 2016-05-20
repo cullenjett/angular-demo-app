@@ -1,7 +1,34 @@
 <section class="row">
-  <div class="col-sm-8 col-sm-offset-2">
+  <div class="col-xs-12" ng-class="{'text-center': !$ctrl.editMode}">
+    <p class="request-meta__title">{{ $ctrl.title }}</p>
+  </div>
 
-    <form name="requestForm" ng-submit="$ctrl.submit()" novalidate>
+  <aside class="col-md-4" ng-if="$ctrl.editMode">
+    <div class="request-meta">
+      <div class="request-meta__group">
+        <div class="form-group">
+          <label>Requestor</label>
+          <p>{{ $ctrl.request.relatedUserName }}</p>
+        </div>
+
+        <div class="form-group">
+          <label>Created On</label>
+          <p>{{ $ctrl.request.dateCreated | date }}</p>
+        </div>
+
+        <div class="form-group">
+          <label>Last Modified</label>
+          <p>{{ $ctrl.request.dateModified | date }}</p>
+        </div>
+      </div>
+
+      <comments data="$ctrl.comments" request-id="$ctrl.request.id"></comments>
+    </div>
+  </aside>
+
+  <div ng-class="{'col-md-8 col-md-offset-0': $ctrl.editMode,
+                  'col-sm-8 col-sm-offset-2': !ctrl.editMode}">
+    <form class="request-form" name="requestForm" ng-submit="$ctrl.submit()" novalidate>
       <fieldset ng-disabled="$ctrl.isSubmitting">
 
         <!-- TODO: Create a component for a custom-styled select box -->
@@ -59,10 +86,5 @@
 
       </fieldset>
     </form>
-
-    <div class="col-xs-12">
-      <comments data="$ctrl.comments" request-id="$ctrl.request.id"></comments>
-    </div>
-
   </div>
 </section>
