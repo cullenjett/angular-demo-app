@@ -3,13 +3,25 @@ class CommentsCtrl {
     this.CommentService = CommentService;
 
     this.newComment = {};
+    this.isSubmitting = false;
   }
 
-  submit() {
+  submit($event) {
+    const ENTER = 13;
+
+    if ($event && $event.keyCode != ENTER) {
+      return;
+    } else {
+      $event.preventDefault();
+    }
+
+    this.isSubmitting = true;
+
     this.newComment.relatedRequest = this.requestId;
 
     this.CommentService.add(this.newComment).then(comment => {
       this.comments.unshift(comment);
+      this.isSubmitting = false;
     })
 
     this.newComment = {};

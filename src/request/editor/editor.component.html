@@ -31,7 +31,6 @@
     <form class="request-form" name="requestForm" ng-submit="$ctrl.submit()" novalidate>
       <fieldset ng-disabled="$ctrl.isSubmitting">
 
-        <!-- TODO: Create a component for a custom-styled select box -->
         <fieldset class="form-group col-xs-12">
           <label for="type" class="control-label">Request Type</label>
           <div class="select-wrapper">
@@ -50,14 +49,14 @@
         </fieldset>
 
         <fieldset class="form-group col-xs-12">
-          <label for="priority" class="control-label">Priority</label>
+          <label for="priority" class="control-label" placeholder="">Priority</label>
           <input type="text" class="form-control" ng-model="$ctrl.request.priority" required>
         </fieldset>
 
         <fieldset class="form-group col-xs-12">
           <label for="description" class="control-label">Description</label>
           <textarea
-            rows="3"
+            rows="4"
             class="form-control"
             placeholder="Enter the details of your request here..."
             ng-model="$ctrl.request.description"

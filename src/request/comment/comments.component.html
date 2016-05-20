@@ -1,11 +1,18 @@
 <section class="comments">
-  <form ng-submit="$ctrl.submit()">
-    <fieldset>
-      <textarea type="text" rows="2" class="form-control" placeholder="Add a comment..." ng-model="$ctrl.newComment.body"></textarea>
+  <form ng-submit="$ctrl.submit($event)">
+    <fieldset ng-disabled="$ctrl.isSubmitting">
+      <textarea ng-keydown="$ctrl.submit($event)" type="text" rows="2" class="form-control" placeholder="Add a comment..." ng-model="$ctrl.newComment.body"></textarea>
     </fieldset>
   </form>
 
   <ul class="comments-list">
+    <li class="comments-list__item" ng-if="!$ctrl.comments.length">
+      <p class="text-center">
+        <i class="fa fa-comments-o comments-list__icon"></i>
+        There aren't any comments yet
+      </p>
+    </li>
+
     <li class="comments-list__item" ng-repeat="comment in $ctrl.comments">
       <div class="row comments-list__header">
         <div class="col-sm-8">

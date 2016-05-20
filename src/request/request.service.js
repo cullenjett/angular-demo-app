@@ -74,6 +74,7 @@ export default class RequestService {
 
   save(request) {
     let dfd = this.$q.defer();
+    let d = new Date();
 
     if (request.id) {
       let safeRequest = {
@@ -86,6 +87,8 @@ export default class RequestService {
         if (res.error) {
           this.Flash.error(res.error.message);
         }
+
+        request.dateModified = d.getTime();
 
         this.handleAttachments(request).then(() => {
           dfd.resolve(true);
@@ -102,7 +105,6 @@ export default class RequestService {
           }
 
           let newId = res;
-          let d = new Date();
 
           request.id = newId;
           request.relatedUserName = user.name;
