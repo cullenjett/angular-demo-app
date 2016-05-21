@@ -1,0 +1,39 @@
+@import '../styles/variables';
+
+.file {
+  position: relative;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 2px solid $light-grey;
+  font-size: 1.2rem;
+  overflow: hidden;
+  box-shadow: 4px 4px 2rem lighten($light-grey, 15);
+}
+
+.file__header {
+  margin-bottom: 2rem;
+}
+
+.file__name {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: .3rem;
+  white-space: nowrap;
+}
+
+.file__meta {
+  font-size: 1.2rem;
+  color: $light-grey;
+  margin-bottom: 0;
+}
+
+.file__view-request {
+  position: absolute;
+  right: 2rem;
+  bottom: 2.5rem;
+}
+
+.file__download.btn.btn-info {
+  font-size: 1.2rem;
+  padding: .5rem 1rem;
+}

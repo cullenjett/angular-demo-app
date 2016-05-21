@@ -32,10 +32,15 @@ module.exports = {
       },
       attachments: {
         dbid: 'bkuvskycj',
+        dateCreated: 1,
         id: 3,
         file: 6,
         description: 7,
         relatedRequest: 8,
+        relatedClient: 13,
+        relatedClientName: 14,
+        relatedUser: 15,
+        relatedUserName: 16,
         quickstart: {
           viewKey: 11,
           modifyKey: 12

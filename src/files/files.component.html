@@ -1,0 +1,20 @@
+<section class="row">
+  <div class="col-lg-3 col-md-4 col-sm-6" ng-repeat="file in $ctrl.files">
+    <div class="file">
+      <div class="file__header">
+        <p class="file__name" title="{{ file.file.filename }}">{{ file.file.filename | limitTo:'30' }}{{ file.file.filename.length > 30 ? '...' : '' }}</p>
+        <p class="file__meta">Uploaded by {{ file.relatedUserName }} on {{ file.dateCreated | date }}</p>
+      </div>
+
+      <a class="btn btn-info file__download" ng-href="{{ file.file.url }}">
+        <i class="fa fa-download">&nbsp;</i>
+        Download
+      </a>
+
+      <a ui-sref="app.requestEditor({id: file.relatedRequest})" class="file__view-request pull-right">
+        <i class="fa fa-search"></i>
+        View Request
+      </a>
+    </div>
+  </div>
+</section>

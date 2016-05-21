@@ -2,6 +2,7 @@ import "./user-management/quickstart-users";
 import "../tmp/templates";
 
 import "./dashboard";
+import "./files";
 import "./layout";
 import "./request";
 import "./shared";
@@ -11,6 +12,7 @@ const DEPENDENCIES = [
   'quickstart-users',
   'templates',
   'app.dashboard',
+  'app.files',
   'app.layout',
   'app.request',
   'app.shared'

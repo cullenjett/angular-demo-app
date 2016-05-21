@@ -13,12 +13,12 @@ class DashboardCtrl {
 
       RequestService.findForUser(user.id).then(requests => {
         this.loadingRequests = false;
-        this.recentRequests = requests;
+        this.recentRequests = requests.slice(0, 5);
       });
 
       CommentService.where({ relatedUser: user.id }).then(comments => {
         this.loadingComments = false;
-        this.recentComments = comments;
+        this.recentComments = comments.slice(0, 5);
       });
     });
   }
