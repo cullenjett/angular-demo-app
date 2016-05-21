@@ -37,6 +37,10 @@ body {
 .header__link:first-child { padding-left: 0; margin-left: 0; }
 .header__link:last-child { padding-right: 0; margin-right: 0; }
 
+.header__link:hover,
+.header__link:focus {
+  text-decoration: none;
+}
 .header__link:not(.no-hover):hover {
   cursor: pointer;
   color: $white;
