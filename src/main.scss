@@ -22,10 +22,15 @@ a:visited {
   margin: 2rem -4rem;
   background: $white;
   box-shadow: 0 5px 3rem -3px rgba(0,0,0,0.1);
+  clear: both;
 }
 
 .hero__title {
   margin: 0 0 5rem 0;
+}
+
+.margin-bottom {
+  margin-bottom: 3rem;
 }
 
 .circle {
