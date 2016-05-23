@@ -1,23 +1,26 @@
 <section class="row">
-  <div class="col-sm-8">
-    <h2 class="table-heading">Recent Requests</h2>
-    <sortable-table
-      data="$ctrl.recentRequests"
-      field-list="[{relatedUserName: 'Requestor'}, 'type', 'description', 'priority']"
-      is-loading="$ctrl.loadingRequests"
-      character-limit="60"
-      on-click-row="$ctrl.onClickRow(id)">
-    </sortable-table>
-  </div>
+  <div class="hero clearfix">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="col-sm-4">
+        <div class="circle">
+          <span class="circle__number">{{ $ctrl.openRequests || '...' }}</span>
+          <h3 class="circle__text">Open</h3>
+        </div>
+      </div>
 
-  <div class="col-sm-4">
-    <h2 class="table-heading">Recent Comments</h2>
-    <sortable-table
-      data="$ctrl.recentComments"
-      field-list="[{body: 'Comment'}]"
-      is-loading="$ctrl.loadingComments"
-      character-limit="40"
-      on-click-row="$ctrl.onClickRow(id)">
-    </sortable-table>
+      <div class="col-sm-4">
+        <div class="circle">
+          <span class="circle__number">{{ $ctrl.inProgresRequests || '...' }}</span>
+          <h3 class="circle__text">In Progress</h3>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="circle">
+          <span class="circle__number">{{ $ctrl.completeRequests || '...' }}</span>
+          <h3 class="circle__text">Completed</h3>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

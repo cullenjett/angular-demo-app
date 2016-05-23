@@ -3,21 +3,16 @@ class DashboardCtrl {
     this.$state = $state;
     this.$q = $q;
 
-    this.recentRequests = [];
-    this.recentComments = [];
-    this.loadingRequests = true;
-    this.loadingComments = true;
+    this.requests = [];
 
     UserService.currentUser().then(user => {
       this.currentUser = user;
 
-      RequestService.findForUser(user.id).then(requests => {
-        this.loadingRequests = false;
-        this.recentRequests = requests.slice(0, 5);
+      RequestService.all().then(requests => {
+        this.requests = requests;
       });
 
-      CommentService.where({ relatedUser: user.id }).then(comments => {
-        this.loadingComments = false;
+      CommentService.where({ relatedClient: user.relatedClient }).then(comments => {
         this.recentComments = comments.slice(0, 5);
       });
     });
@@ -25,6 +20,18 @@ class DashboardCtrl {
 
   onClickRow(id) {
     this.$state.go('app.requestEditor', { id });
+  }
+
+  get openRequests() {
+    return this.requests.filter(req => { return req.status === 'Open' }).length;
+  }
+
+  get inProgresRequests() {
+    return this.requests.filter(req => { return req.status === 'In Progress' }).length;
+  }
+
+  get completeRequests() {
+    return this.requests.filter(req => { return req.status === 'Complete' }).length;
   }
 }
 
