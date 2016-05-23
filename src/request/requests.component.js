@@ -1,6 +1,7 @@
 class RequestsCtrl {
   constructor($state, $stateParams, UserService, RequestService, AuthService) {
     this.$state = $state;
+    this.$stateParams = $stateParams;
 
     this.activeRequests = [];
     this.isLoading = true;
@@ -36,7 +37,7 @@ class RequestsCtrl {
       });
     }
 
-    this.activeFilter = status;
+    this.$state.go(this.$state.current, {filter: status});
   }
 
   onClickRow(id) {
