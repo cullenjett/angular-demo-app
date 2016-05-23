@@ -12,7 +12,13 @@ class RequestsCtrl {
       return RequestService.all()
     }).then(requests => {
       this.allRequests = requests;
-      this.activeRequests = requests;
+      this.activeRequests = requests.filter(request => {
+        if (this.activeFilter == 'All') {
+          return request;
+        } else {
+          return request.status == this.activeFilter;
+        }
+      });
       this.isLoading = false;
     });
   }
