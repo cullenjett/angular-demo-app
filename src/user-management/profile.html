@@ -1,35 +1,37 @@
 <div class="row">
-  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-    <h1 class="text-center">{{ $root.currentUser.name }}'s Profile</h1>
+  <div class="hero clearfix">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+      <h1 class="text-center">{{ $root.currentUser.name }}'s Profile</h1>
 
-    <form name="profileForm" ng-submit="$ctrl.submit()">
-      <fieldset ng-disabled="$ctrl.isSubmitting">
+      <form name="profileForm" ng-submit="$ctrl.submit()">
+        <fieldset ng-disabled="$ctrl.isSubmitting">
 
-        <fieldset class="form-group">
-          <label for="name" class="control-label">Your Name</label>
-          <input type="text" class="form-control" ng-model="$root.currentUser.name" required>
+          <fieldset class="form-group">
+            <label for="name" class="control-label">Your Name</label>
+            <input type="text" class="form-control" ng-model="$root.currentUser.name" required>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="name" class="control-label">Email Address</label>
+            <input type="text" class="form-control" ng-model="$root.currentUser.username" required>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="name" class="control-label">Last Sign In&nbsp;</label>
+            <span>{{ $root.currentUser.lastLoggedIn }}</span>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <button type="submit" class="btn btn-info btn-block" ng-disabled="profileForm.$invalid">Save</button>
+          </fieldset>
+
         </fieldset>
+      </form>
 
-        <fieldset class="form-group">
-          <label for="name" class="control-label">Email Address</label>
-          <input type="text" class="form-control" ng-model="$root.currentUser.username" required>
-        </fieldset>
+      <hr>
 
-        <fieldset class="form-group">
-          <label for="name" class="control-label">Last Sign In:</label>
-          <span>{{ $root.currentUser.lastLoggedIn }}</span>
-        </fieldset>
-
-        <fieldset class="form-group">
-          <button type="submit" class="btn btn-info btn-block" ng-disabled="profileForm.$invalid">Save</button>
-        </fieldset>
-
-      </fieldset>
-    </form>
-
-    <hr>
-
-    <a ui-sref="app.changePassword" class="btn btn-default">Change Password</a>
-    <button class="btn btn-danger pull-right" ng-click="$ctrl.signOut()">Sign Out</button>
+      <a ui-sref="app.changePassword" class="btn btn-default">Change Password</a>
+      <button class="btn btn-danger pull-right" ng-click="$ctrl.signOut()">Sign Out</button>
+    </div>
   </div>
 </div>
