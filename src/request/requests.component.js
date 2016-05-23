@@ -1,11 +1,11 @@
 class RequestsCtrl {
-  constructor($state, UserService, RequestService, AuthService) {
+  constructor($state, $stateParams, UserService, RequestService, AuthService) {
     this.$state = $state;
 
     this.activeRequests = [];
     this.isLoading = true;
     this.filters = ['All', 'Open', 'In Progress', 'Complete'];
-    this.activeFilter = 'All';
+    this.activeFilter = $stateParams.filter || 'All';
 
     UserService.currentUser().then(user => {
       this.currentUser = user;

@@ -12,7 +12,7 @@ angular
   .config(($stateProvider) => {
     $stateProvider
       .state('app.requests', {
-        url: '/requests',
+        url: '/requests?filter',
         template: '<requests></requests>',
         title: 'Requests'
       })

@@ -4,21 +4,21 @@
       <div class="col-sm-4">
         <div class="circle">
           <span class="circle__number">{{ $ctrl.openRequests || '...' }}</span>
-          <h3 class="circle__text">Open</h3>
+          <a ui-sref="app.requests({filter: 'Open'})" class="circle__text">Open</a>
         </div>
       </div>
 
       <div class="col-sm-4">
         <div class="circle">
           <span class="circle__number">{{ $ctrl.inProgresRequests || '...' }}</span>
-          <h3 class="circle__text">In Progress</h3>
+          <a ui-sref="app.requests({filter: 'In Progress'})" class="circle__text">In Progress</a>
         </div>
       </div>
 
       <div class="col-sm-4">
         <div class="circle">
           <span class="circle__number">{{ $ctrl.completeRequests || '...' }}</span>
-          <h3 class="circle__text">Completed</h3>
+          <a ui-sref="app.requests({filter: 'Complete'})" class="circle__text">Complete</a>
         </div>
       </div>
     </div>
