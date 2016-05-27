@@ -27,7 +27,9 @@ module.exports = {
           key: 8,
           password: 9,
           restricted: 10,
-          lastLoggedIn: 11
+          lastLoggedIn: 11,
+          viewKey: 20,
+          modifyKey: 21
         }
       },
       attachments: {

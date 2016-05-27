@@ -4,8 +4,7 @@ class FilesCtrl {
 
     this.FileService.all().then(files => {
       this.files = files;
-      console.log(this.files)
-    })
+    });
   }
 }
 
