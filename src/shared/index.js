@@ -1,4 +1,4 @@
-import AttachmentService from './attachment.service.js';
+import AttachmentService from './attachment.service';
 import FileUploaderComponent from './file-uploader/file-uploader.component';
 import quickbase from './quickbase-client';
 import SortableTableComponent from './sortable-table/sortable-table.component';
