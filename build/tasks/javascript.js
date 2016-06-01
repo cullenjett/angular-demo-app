@@ -11,6 +11,7 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var notify = require('gulp-notify');
+var swPrecache = require('sw-precache');
 
 var paths = require('../paths');
 var app = require(paths.app);
@@ -46,3 +47,9 @@ gulp.task('js-prod', ['templates'], function(){
     .pipe(gulp.dest(paths.outputProd));
 });
 
+gulp.task('generate-service-worker', function(callback) {
+  swPrecache.write('tmp/service-worker.js', {
+    staticFileGlobs: ['tmp/**/*'],
+    stripPrefix: 'tmp'
+  }, callback);
+});
