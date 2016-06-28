@@ -1,13 +1,16 @@
 class FileUploaderCtrl {
   constructor($q, $element) {
     this.$q = $q;
-    this.$el = $element.find('.drag-and-drop');
-    this.$fileInput = this.$el.find('.drag-and-drop__file');
-    this.hoverClass = "drag-and-drop--drag-hover";
-    this.uploadingClass = "drag-and-drop--is-reading";
+    this.$el = $element.find('.file-uploader');
+    this.$fileInput = this.$el.find('.file-uploader__file');
+    this.hoverClass = "file-uploader--drag-hover";
+    this.uploadingClass = "file-uploader--is-reading";
+
+    this.handleFileSelect = this.handleFileSelect.bind(this);
   }
 
   $onInit() {
+    // File inputs don't play well with Angular (i.e. no 'ng-change' events)
     this.$el
       .on('drag dragstart dragend dragover dragenter dragleave drop', (e) => {
         e.preventDefault();
@@ -15,9 +18,9 @@ class FileUploaderCtrl {
       })
       .on('dragover dragenter', (e) => { this.$el.addClass(this.hoverClass); })
       .on('dragleave dragend drop', (e) => { this.$el.removeClass(this.hoverClass); })
-      .on('drop', this.handleFileSelect.bind(this));
+      .on('drop', this.handleFileSelect);
 
-    this.$fileInput.on('change', this.handleFileSelect.bind(this));
+    this.$fileInput.on('change', this.handleFileSelect);
   }
 
   handleFileSelect(e) {
