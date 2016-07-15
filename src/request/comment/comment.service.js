@@ -1,9 +1,9 @@
 export default class CommentService {
-  constructor($q, quickbase, Flash, UserService) {
+  constructor($q, quickbase, FlashService, UserService) {
     this.$q = $q;
     this.quickbase = quickbase;
     this.UserService = UserService;
-    this.Flash = Flash;
+    this.FlashService = FlashService;
   }
 
   add(comment) {
@@ -14,7 +14,7 @@ export default class CommentService {
 
       this.quickbase.comments.addRecord(comment, (res) => {
         if (res.error) {
-          this.Flash.error(res.error.message);
+          this.FlashService.error(res.error.message);
         }
 
         let d = new Date();
@@ -34,7 +34,7 @@ export default class CommentService {
 
     this.quickbase.comments.doQuery(query, {slist: 'dateCreated', options: 'sortorder-D'}, (res) => {
       if (res.error) {
-        this.Flash.error(res.error.message);
+        this.FlashService.error(res.error.message);
       }
 
       dfd.resolve(res);

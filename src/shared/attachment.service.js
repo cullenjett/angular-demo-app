@@ -1,8 +1,8 @@
 export default class AttachmentService {
-  constructor($q, quickbase, Flash) {
+  constructor($q, quickbase, FlashService) {
     this.$q = $q;
     this.quickbase = quickbase;
-    this.Flash = Flash;
+    this.FlashService = FlashService;
   }
 
   add(files, requestId) {
@@ -16,7 +16,7 @@ export default class AttachmentService {
 
         this.quickbase.attachments.addRecord(file, (res) => {
           if (res.error) {
-            this.Flash.error(res.error.message);
+            this.FlashService.error(res.error.message);
           }
 
           dfd.resolve(true);
@@ -32,7 +32,7 @@ export default class AttachmentService {
   delete(id) {
     this.quickbase.attachments.purgeRecords({ id }, (res) => {
       if (res.error) {
-        this.Flash.error(res.error.message);
+        this.FlashService.error(res.error.message);
       }
     })
   }
@@ -42,7 +42,7 @@ export default class AttachmentService {
 
     this.quickbase.attachments.doQuery(query, {}, (res) => {
       if (res.errror) {
-        this.Flash.error(res.error.message);
+        this.FlashService.error(res.error.message);
       }
 
       dfd.resolve(res)
