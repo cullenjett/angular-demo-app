@@ -1,24 +1,27 @@
 import Base from "../../shared/quickbase-client"
 
 class ChangePasswordCtrl {
-  constructor(AuthService) {
+  constructor($rootScope, AuthService, FlashService, AUTH_EVENTS) {
     this.AuthService = AuthService;
+    this.FlashService = FlashService;
+    this.AUTH_EVENTS = AUTH_EVENTS;
+    this.$rootScope = $rootScope;
+
+    this.formData = {
+      name: $rootScope.currentUser.name
+    };
   }
 
-  changePassword(user){
+  submit(formData){
     const _self = this;
-
-    $("#changePassword").attr("disabled", "disabled").html("Processing...");
-
-    user = {
-      newPassword: user.newPassword,
-      currentPassword: user.oldPassword
+    const user = {
+      newPassword: formData.newPassword,
+      currentPassword: formData.currentPassword
     };
 
     Base.quickstart.changePassword(user, function(response){
       if(response.error){
         _self.FlashService.error(response.error.message);
-        $("#changePassword").removeAttr("disabled").html("Change Password");
       }else{
         _self.$rootScope.$broadcast(_self.AUTH_EVENTS.loginSuccess);
         _self.FlashService.success(response);
