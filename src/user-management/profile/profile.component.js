@@ -1,6 +1,16 @@
 class ProfileCtrl {
-  constructor(AuthService) {
+  constructor($rootScope, AuthService) {
   	this.AuthService = AuthService;
+
+    this.formData = {
+      name: $rootScope.currentUser.name,
+      username: $rootScope.currentUser.username,
+      lastLoggedIn: $rootScope.currentUser.lastLoggedIn
+    }
+  }
+
+  submit(formData) {
+  	
   }
 }
 
