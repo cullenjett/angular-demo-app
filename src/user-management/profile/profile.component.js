@@ -1,6 +1,6 @@
 class ProfileCtrl {
-  constructor() {
-
+  constructor(AuthService) {
+  	this.AuthService = AuthService;
   }
 }
 
