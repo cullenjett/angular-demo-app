@@ -49,9 +49,7 @@ class EditorCtrl {
       this.request.attachments = [];
     }
 
-    this.$scope.$apply(() => {
-      this.request.attachments.push({ file })
-    });
+    this.request.attachments.push({ file })
   }
 
   removeAttachment(attachment, index) {

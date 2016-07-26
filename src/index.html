@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-bind="pageTitle"></title>
+    <link rel="icon" href="https://avatars2.githubusercontent.com/u/634423?v=3&s=200">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="bundle.css">
 	</head>
 
@@ -14,9 +15,18 @@
     <div ui-view></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://s3.amazonaws.com/ais_libraries/BaseJS/4.8/base.min.js"></script>
+    <script src="https://s3.amazonaws.com/ais_libraries/BaseJS/4.9.1/base.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
     <script src="bundle.js"></script>
+    <script>
+      const registerServiceWorker = () => {
+        navigator.serviceWorker.register('./service-worker.js').then((reg) => {
+          console.log("Service worker registered:", reg)
+        })
+      };
+
+      registerServiceWorker();
+    </script>
 	</body>
 </html>
