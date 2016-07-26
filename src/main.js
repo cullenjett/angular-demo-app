@@ -1,21 +1,20 @@
-import "./user-management/quickstart-users";
-import "../tmp/templates";
-
 import "./dashboard";
 import "./files";
 import "./layout";
 import "./request";
 import "./shared";
+import './user-management';
+import "../tmp/templates";
 
 const DEPENDENCIES = [
   'ui.router',
-  'quickstart-users',
   'templates',
   'app.dashboard',
   'app.files',
   'app.layout',
   'app.request',
-  'app.shared'
+  'app.shared',
+  'app.user-management',
 ];
 
 angular

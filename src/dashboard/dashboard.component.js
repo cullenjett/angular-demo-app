@@ -1,5 +1,5 @@
 class DashboardCtrl {
-  constructor($state, $q, CommentService, UserService, RequestService, Flash) {
+  constructor($state, $q, CommentService, UserService, RequestService, FlashService) {
     this.$state = $state;
     this.$q = $q;
 

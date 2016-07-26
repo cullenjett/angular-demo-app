@@ -1,9 +1,9 @@
 export default class FileService {
-  constructor($q, $sce, quickbase, Flash, UserService) {
+  constructor($q, $sce, quickbase, UserManagement, UserService) {
     this.$q = $q;
     this.$sce = $sce;
     this.quickbase = quickbase;
-    this.Flash = Flash;
+    this.UserManagement = UserManagement;
     this.UserService = UserService;
 
     this.allFiles = false;
@@ -22,7 +22,7 @@ export default class FileService {
         relatedClient: user.relatedClient
       }, {slist: 'dateCreated', options: 'sortorder-D'}, (res) => {
         if (res.error) {
-          this.Flash.error(res.error.message);
+          this.UserManagement.error(res.error.message);
         }
 
         this.allFiles = res.map(attachment => {

@@ -1,9 +1,9 @@
 export default class RequestService {
-  constructor($q, quickbase, AttachmentService, Flash, UserService) {
+  constructor($q, quickbase, AttachmentService, FlashService, UserService) {
     this.$q = $q;
     this.quickbase = quickbase;
     this.AttachmentService = AttachmentService;
-    this.Flash = Flash;
+    this.FlashService = FlashService;
     this.UserService = UserService;
 
     this.allRequests = null;
@@ -20,7 +20,7 @@ export default class RequestService {
           relatedClient: user.relatedClient
         }, {slist: 'dateCreated', options: 'sortorder-D'}, (res) => {
           if (res.error) {
-            this.Flash.error(res.error.message);
+            this.FlashService.error(res.error.message);
           }
 
           this.allRequests = res;
@@ -41,7 +41,7 @@ export default class RequestService {
     } else {
       this.quickbase.requests.doQuery({ id }, {slist: 'dateCreated', options: 'sortorder-D'}, (res) => {
         if (res.error) {
-          this.Flash.error(res.error.message);
+          this.FlashService.error(res.error.message);
         }
 
         dfd.resolve(res[0])
@@ -85,7 +85,7 @@ export default class RequestService {
 
       this.quickbase.requests.editRecord(request.id, safeRequest, (res) => {
         if (res.error) {
-          this.Flash.error(res.error.message);
+          this.FlashService.error(res.error.message);
         }
 
         request.dateModified = d.getTime();
@@ -101,7 +101,7 @@ export default class RequestService {
 
         this.quickbase.requests.addRecord(request, (res) => {
           if (res.error) {
-            this.Flash.error(res.error.message);
+            this.FlashService.error(res.error.message);
           }
 
           let newId = res;

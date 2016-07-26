@@ -1,37 +1,36 @@
 <div class="row">
   <div class="hero clearfix">
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-      <h1 class="text-center">{{ $root.currentUser.name }}'s Profile</h1>
+      <h1 class="text-center">{{ $ctrl.formData.name }}'s Profile</h1>
 
-      <form name="profileForm" ng-submit="$ctrl.submit()">
+      <form name="profileForm" ng-submit="$ctrl.submit($ctrl.formData)">
         <fieldset ng-disabled="$ctrl.isSubmitting">
 
           <fieldset class="form-group">
             <label for="name" class="control-label">Your Name</label>
-            <input type="text" class="form-control" ng-model="$root.currentUser.name" required>
+            <input type="text" class="form-control" ng-model="$ctrl.formData.name" required>
           </fieldset>
 
           <fieldset class="form-group">
             <label for="name" class="control-label">Email Address</label>
-            <input type="text" class="form-control" ng-model="$root.currentUser.username" required>
+            <input type="text" class="form-control" ng-model="$ctrl.formData.username" required>
           </fieldset>
 
           <fieldset class="form-group">
             <label for="name" class="control-label">Last Sign In&nbsp;</label>
-            <span>{{ $root.currentUser.lastLoggedIn }}</span>
+            <span>{{ $ctrl.formData.lastLoggedIn }}</span>
           </fieldset>
 
           <fieldset class="form-group">
             <button type="submit" class="btn btn-info btn-block" ng-disabled="profileForm.$invalid">Save</button>
           </fieldset>
-
         </fieldset>
       </form>
 
       <hr>
 
       <a ui-sref="app.changePassword" class="btn btn-default">Change Password</a>
-      <button class="btn btn-danger pull-right" ng-click="$ctrl.signOut()">Sign Out</button>
+      <button class="btn btn-danger pull-right" ng-click="$ctrl.AuthService.logout()">Sign Out</button>
     </div>
   </div>
 </div>
