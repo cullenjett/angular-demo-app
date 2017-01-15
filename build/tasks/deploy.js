@@ -1,35 +1,34 @@
 var gulp = require('gulp');
-var rename = require('gulp-rename');
-var replace = require('gulp-replace');
-var insert = require('gulp-insert');
+var foreach = require('gulp-foreach');
+var request = require('request');
+var path = require('path');
+var del = require('del');
 
 var paths = require('../paths');
-var app = require(paths.app);
+var quickbaseConfig = require(paths.quickbase);
+var QuickbaseApi = require('../lib/api-client');
 
-var deployTasks = [
-  'js-prod',
-  'css-prod',
-  'html-prod',
-  'upload-assets',
-  'upload-html',
-  'upload-config'
-];
+gulp.task('deploy', ['clean-prod', 'upload-to-quickbase']);
 
-gulp.task('deploy', function() {
-  gulp.start.apply(this, deployTasks);
+gulp.task('clean-prod', function() {
+  return del.sync(paths.outputProd);
 });
 
-//git init repo
-gulp.task('init', function(){
-  gulp.start(['update-readme']);
-});
+gulp.task('upload-to-quickbase', ['html-prod', 'css-prod', 'js-prod'], function() {
+  var password = quickbaseConfig.password || process.env.GULPPASSWORD;
+  quickbaseConfig.password = password;
 
-gulp.task('update-readme', function(){
-  gulp.src(['README.md'])
-    .pipe(replace(/.*\n?/g, ''))
-    .pipe(insert.append("# " + app.name + "\n"))
-    .pipe(insert.append("#### Description: " + app.description + "\n"))
-    .pipe(insert.append("#### Client: " + app.client + "\n"))
-    .pipe(insert.append("#### Authors: " + app.authors))
-    .pipe(gulp.dest('.'));
+  var quickbaseClient = new QuickbaseApi(quickbaseConfig);
+
+  return gulp.src(paths.outputProd + '/*.{html,css,js}')
+    .pipe(foreach(function(stream, file){
+      var filename = path.basename(file.path);
+      var contents = file.contents.toString();
+
+      quickbaseClient.uploadPage(filename, contents)
+        .then(res => console.log("\t   File uploaded:", filename))
+        .catch(err => console.error(`\t   Error uploading ${filename}:\n${err}`))
+
+      return stream;
+    }));
 });

@@ -1,55 +1,60 @@
 var gulp = require('gulp');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var babel = require('gulp-babel');
-var sourcemaps = require('gulp-sourcemaps');
-var rename = require('gulp-rename');
-var insert = require('gulp-insert');
-var replace = require('gulp-replace');
-var inject = require('gulp-inject-string');
+var watchify = require('watchify');
 var browserify = require('browserify');
 var babelify = require('babelify');
+var inject = require('gulp-inject-string');
 var source = require('vinyl-source-stream');
-var notify = require('gulp-notify');
-var swPrecache = require('sw-precache');
+var buffer = require('vinyl-buffer');
+var templateCache = require('gulp-angular-templatecache');
+var htmlmin = require('gulp-htmlmin');
 
+var browserSync = require('../lib/browser-sync');
+var interceptErrors = require('../lib/intercept-errors');
 var paths = require('../paths');
-var app = require(paths.app);
+var quickbaseConfig = require(paths.quickbase);
+var appConfig = require(paths.app);
 
-function interceptErrors(error) {
-  var args = Array.prototype.slice.call(arguments);
-
-  // Send error to notification center with gulp-notify
-  notify.onError({
-    title: 'Compile Error',
-    message: '<%= error.message %>'
-  }).apply(this, args);
-
-  // Keep gulp from hanging on this task
-  this.emit('end');
-};
-
-gulp.task('js-dev', ['templates'], function(){
-  return browserify(app.bootstrap, {debug: true})
-    .transform('babelify', {presets: ['es2015']})
-    .bundle()
-    .on('error', interceptErrors)
-    .pipe(source('bundle.js'))
-    .pipe(gulp.dest(paths.outputDev));
+gulp.task('js-dev', ['templates'], function () {
+  return bundleJavascript();
 });
 
-gulp.task('js-prod', ['templates'], function(){
-  return browserify(app.bootstrap, {debug: true})
-    .transform('babelify', {presets: ['es2015']})
+gulp.task('js-prod', ['templates'], function() {
+  return browserify(appConfig.bootstrap)
+    .transform(babelify, {presets: ['es2015']})
     .bundle()
     .on('error', interceptErrors)
-    .pipe(source(app.name + '-bundle.js'))
+    .pipe(source(appConfig.name + '-bundle.js'))
+    .pipe(buffer())
     .pipe(gulp.dest(paths.outputProd));
 });
 
-gulp.task('generate-service-worker', function(callback) {
-  swPrecache.write('tmp/service-worker.js', {
-    staticFileGlobs: ['tmp/**/*'],
-    stripPrefix: 'tmp'
-  }, callback);
+gulp.task('templates', function() {
+  return gulp.src(paths.templates)
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(templateCache('templates.js', {
+      module: 'templates',
+      standalone: true
+    }))
+    .pipe(gulp.dest(paths.outputDev));
 });
+
+watchify.args.debug = true;
+
+var bundler = watchify(browserify(appConfig.bootstrap, watchify.args));
+bundler.transform(babelify, {presets: ['es2015']});
+bundler.on('update', bundleJavascript);
+
+function bundleJavascript() {
+  console.log('\t   Compiling JS...');
+
+  var password = quickbaseConfig.password ? quickbaseConfig.password : process.env.GULPPASSWORD;
+  var injectedPasswordString = 'password: \"' + password + '\",\n';
+
+  return bundler.bundle()
+    .on('error', interceptErrors)
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(inject.before('databaseId:', injectedPasswordString))
+    .pipe(gulp.dest(paths.outputDev))
+    .pipe(browserSync.stream({once: true}));
+}
