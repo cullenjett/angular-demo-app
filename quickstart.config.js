@@ -1,14 +1,10 @@
 module.exports = {
-  name: "project-condor",
-  description: "Top secret work",
-  client: "AIS",
-  username: "cullenjett",
-  origin: "https://github.com/AdvantageIntegratedSolutions/project-condor.git",
-  authors: ["The Condor"],
+  name: "angular-demo-app",
   bootstrap: "./src/main.js",
   timezone: "mountain",
   baseConfig: {
-    quickstart: "true",
+    username: "cullenjett",
+    password: process.env.GULPPASSWORD,
     realm: "ais",
     async: "callback",
     databaseId: "bkuvskxbm",
