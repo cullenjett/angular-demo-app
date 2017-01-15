@@ -11,8 +11,8 @@ var htmlmin = require('gulp-htmlmin');
 var browserSync = require('../lib/browser-sync');
 var interceptErrors = require('../lib/intercept-errors');
 var paths = require('../paths');
-var quickbaseConfig = require(paths.quickbase);
 var appConfig = require(paths.app);
+var quickbaseConfig = appConfig.baseConfig;
 
 gulp.task('js-dev', ['templates'], function () {
   return bundleJavascript();

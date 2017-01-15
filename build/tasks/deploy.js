@@ -5,7 +5,7 @@ var path = require('path');
 var del = require('del');
 
 var paths = require('../paths');
-var quickbaseConfig = require(paths.quickbase);
+var quickbaseConfig = require(paths.app).baseConfig;
 var QuickbaseApi = require('../lib/api-client');
 
 gulp.task('deploy', ['clean-prod', 'upload-to-quickbase']);

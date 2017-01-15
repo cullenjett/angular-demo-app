@@ -4,8 +4,8 @@ var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 
 var paths = require('../paths');
-var quickbaseConfig = require(paths.quickbase);
 var appConfig = require(paths.app);
+var quickbaseConfig = appConfig.baseConfig;
 
 gulp.task('html-dev', function() {
   return gulp.src(paths.html)

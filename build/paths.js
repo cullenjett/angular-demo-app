@@ -1,10 +1,9 @@
 module.exports = {
-  app: "../../config/app.config.js",
-  quickbase: "../../config/quickbase.config.js",
-  javascript: "app/**/*.js",
-  html: "app/index.html",
-  css: "app/**/*.{sass,scss,css}",
-  templates: "app/**/!(index).html",
+  app: "../../quickstart.config.js",
+  javascript: "src/**/*.js",
+  html: "src/index.html",
+  css: "src/**/*.{sass,scss,css}",
+  templates: "src/**/!(index).html",
   outputDev: "./tmp",
   outputProd: "./dist"
 };
